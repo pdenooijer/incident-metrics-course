@@ -1,0 +1,7 @@
+# Configuration file version
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: Prometheus
+    url: http://prometheus:9090
