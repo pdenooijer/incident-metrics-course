@@ -1,6 +1,33 @@
 version: "3.8"
 
 services:
+  elasticsearch:
+    image: docker.io/elasticsearch:8.18.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+
+  logstash:
+    image: docker.io/logstash:8.18.0
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./logs/app:/logs/app
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: docker.io/kibana:8.18.0
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+
   prometheus:
     image: docker.io/prom/prometheus:v3.3.1
     volumes:
