@@ -23,6 +23,10 @@
         <surefire-plugin.version>3.5.2</surefire-plugin.version>
     </properties>
 
+    <modules>
+        <module>hello-world</module>
+    </modules>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
