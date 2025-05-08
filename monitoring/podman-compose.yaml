@@ -4,7 +4,7 @@ services:
   prometheus:
     image: docker.io/prom/prometheus:v3.3.1
     volumes:
-      - ./prometheus.yaml:/etc/prometheus/prometheus.yaml:Z
+      - ./prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml
     ports:
       - "9090:9090"
 
@@ -16,7 +16,3 @@ services:
       - ./grafana/provisioning:/etc/grafana/provisioning
     depends_on:
       - prometheus
-
-volumes:
-  esdata:
-  grafana-storage:
