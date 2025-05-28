@@ -1,3 +1,9 @@
+#!/bin/bash -Eeu
+set -o pipefail
+
+helm repo add elastic https://helm.elastic.co
+helm repo update elastic
+
 helm install elasticsearch elastic/elasticsearch -f helm/elasticsearch-values.yml -n monitoring --create-namespace
 helm install filebeat elastic/filebeat -f helm/filebeat-values.yml -n monitoring
 helm install logstash elastic/logstash -f helm/logstash-values.yml -n monitoring
