@@ -23,10 +23,10 @@ mvn quarkus:dev
 
 > **_NOTE:_**  Quarkus ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
 
-## Package and build the microservices with Maven & Podman
+## Package, build and run the microservices with Maven & Podman
 
-The applications can be packaged and build using:
+The applications can be packaged, build and run in a single command using:
 
 ```shell script
-./build-services.sh
+./build-and-run-services.sh
 ```
