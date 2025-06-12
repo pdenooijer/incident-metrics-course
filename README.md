@@ -21,11 +21,3 @@ The applications can be packaged and build using:
 ```shell script
 ./build-services.sh
 ```
-
-## Running the microservices in Podman
-
-The applications can be run in Podman using:
-
-```shell script
-./run-services.sh
-```
