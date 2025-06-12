@@ -1,12 +1,63 @@
 #!/bin/bash -Eeu
 set -o pipefail
 
-podman machine stop
+podman machine stop 2>/dev/null || true
 
-# Create machine and set as default
-podman machine init --memory 16384 --cpus 6 incident-metrics-workshop
-podman machine start incident-metrics-workshop
-podman system connection default incident-metrics-workshop
+# Create podman machine and set as default
+name=incident-metrics-workshop
+podman machine init --memory 16384 --cpus 6 "${name}"
+podman machine start "${name}"
+podman system connection default "${name}"
 
-# Create KinD cluster
-KIND_EXPERIMENTAL_PROVIDER=podman kind create cluster --name incident-metrics-workshop
+# Create registry container
+# https://kind.sigs.k8s.io/docs/user/local-registry/
+reg_name='kind-registry'
+reg_port='5001'
+podman run --detach --restart=always --publish "127.0.0.1:${reg_port}:5000" --network bridge --name "${reg_name}" \
+  registry:2
+
+# Create kind cluster with containerd registry config dir enabled
+#
+# See:
+# https://github.com/kubernetes-sigs/kind/issues/2875
+# https://github.com/containerd/containerd/blob/main/docs/cri/config.md#registry-configuration
+# See: https://github.com/containerd/containerd/blob/main/docs/hosts.md
+export KIND_EXPERIMENTAL_PROVIDER=podman
+cat <<EOF | kind create cluster --name "${name}" --config=-
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+containerdConfigPatches:
+- |-
+  [plugins."io.containerd.grpc.v1.cri".registry]
+    config_path = "/etc/containerd/certs.d"
+EOF
+
+# Add the registry config to the nodes
+#
+# This is necessary because localhost resolves to loopback addresses that are network-namespace local. In other words:
+# localhost in the container is not localhost on the host. We want a consistent name that works from both ends,
+# so we tell containerd to alias localhost:${reg_port} to the registry container when pulling images.
+registry_dir="/etc/containerd/certs.d/localhost:${reg_port}"
+for node in $(kind get nodes --name "${name}"); do
+  podman exec "${node}" mkdir -p "${registry_dir}"
+  cat <<EOF | podman exec -i "${node}" cp /dev/stdin "${registry_dir}/hosts.toml"
+[host."http://${reg_name}:5000"]
+EOF
+done
+
+# Connect the registry to the cluster network.
+podman network connect "kind" "${reg_name}"
+
+# Document the local registry.
+# https://github.com/kubernetes/enhancements/tree/master/keps/sig-cluster-lifecycle/generic/1755-communicating-a-local-registry
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: local-registry-hosting
+  namespace: kube-public
+data:
+  localRegistryHosting.v1: |
+    host: "localhost:${reg_port}"
+    help: "https://kind.sigs.k8s.io/docs/user/local-registry/"
+EOF
