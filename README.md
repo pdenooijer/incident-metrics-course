@@ -10,7 +10,12 @@ A new podman machine will be created that will run the Kubernetes cluster and
 image registry for this course. Run the following script:
 
 ```shell script
-./create-cluster.sh
+./01-create-machine.sh
+```
+Run this command to create the Kind Kubernetes cluster on the newly created Podman machine.
+
+```shell script
+./02-create-machine.sh
 ```
 
 ## Running the applications in dev mode
@@ -28,5 +33,5 @@ mvn quarkus:dev
 The applications can be packaged, build and run in a single command using:
 
 ```shell script
-./build-and-run-services.sh
+./03-build-and-run-services.sh
 ```
