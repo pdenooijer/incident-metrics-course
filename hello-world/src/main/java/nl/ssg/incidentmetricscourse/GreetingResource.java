@@ -11,6 +11,12 @@ public class GreetingResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return "Hello from Quarkus REST";
+        return "Hello from Quarkus REST in plain text";
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public HelloWorldResponse helloJson() {
+        return new HelloWorldResponse("Hello from Quarkus REST in JSON");
     }
 }
