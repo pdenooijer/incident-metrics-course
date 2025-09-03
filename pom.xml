@@ -26,6 +26,8 @@
 
     <modules>
         <module>hello-world</module>
+        <module>rabbitmq-processor</module>
+        <module>rabbitmq-producer</module>
     </modules>
 
     <dependencyManagement>
