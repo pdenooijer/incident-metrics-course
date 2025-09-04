@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  labels:
+    app: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: api-gateway
+          image: "localhost:5001/api-gateway:{{ .Values.version }}"
+          imagePullPolicy: Always
+          env:
+            - name: quarkus.rest-client.hello-world.url
+              value: "http://hello-world"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /tmp/vertx-cache
+              name: vertx-cache
+          securityContext:
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 1m
+              memory: 100Mi
+              ephemeral-storage: 1Mi
+            limits:
+              cpu: "1"
+              memory: 256Mi
+              ephemeral-storage: 100Mi
+          startupProbe:
+            httpGet:
+              path: /q/health/started
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 1
+            failureThreshold: 7
+          livenessProbe:
+            httpGet:
+              path: /q/health/live
+              port: 8080
+            periodSeconds: 60
+            failureThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /q/health/ready
+              port: 8080
+            periodSeconds: 60
+            failureThreshold: 1
+      volumes:
+        - name: vertx-cache
+          emptyDir: { }

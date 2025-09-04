@@ -27,6 +27,7 @@
     </properties>
 
     <modules>
+        <module>api-gateway</module>
         <module>hello-world</module>
         <module>rabbitmq/rabbitmq-model</module>
         <module>rabbitmq/rabbitmq-processor</module>

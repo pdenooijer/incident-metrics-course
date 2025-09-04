@@ -1,0 +1,4 @@
+apiVersion: v2
+name: api-gateway
+description: API Gateway to other services
+version: 1.0.0
