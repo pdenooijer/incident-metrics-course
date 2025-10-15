@@ -1,7 +1,7 @@
 #!/bin/bash -Eeu
 set -o pipefail
 
-#mvn package
+mvn package
 
 registry=localhost:5001
 version=$(date +%s)
