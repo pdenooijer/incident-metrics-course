@@ -15,7 +15,7 @@ image registry for this course. Run the following script:
 Run this command to create the Kind Kubernetes cluster on the newly created Podman machine.
 
 ```shell script
-./02-create-machine.sh
+./02-create-cluster.sh
 ```
 
 ## Running the applications in dev mode
