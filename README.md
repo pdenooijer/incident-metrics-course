@@ -7,9 +7,9 @@ If you want to learn more about Quarkus, please visit its website: <https://quar
 ## Prerequisites
 You must have the following installed on your machine:
 * podman-desktop - `brew install podman-desktop`
-* podman (if you do not want to use podnam-desktop) - `brew install podman`
 * Kubernetes in Docker (kind) - `brew install kind`
 * Maven
+* Java 21 or newer
 
 ## Create Kubernetes cluster
 
