@@ -1,0 +1,4 @@
+apiVersion: v2
+name: rabbitmq-processor
+description: Hello world service
+version: 1.0.0
