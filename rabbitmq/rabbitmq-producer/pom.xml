@@ -3,9 +3,15 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>nl.ssg.incidentmetricscourse</groupId>
+        <artifactId>course</artifactId>
+        <version>${revision}${changelist}</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
     <groupId>org.acme</groupId>
-    <artifactId>rabbitmq-quickstart-producer</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <artifactId>rabbitmq-producer</artifactId>
+    <version>${revision}${changelist}</version>
     <properties>
         <compiler-plugin.version>3.11.0</compiler-plugin.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
@@ -30,6 +36,11 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <dependency>
+            <groupId>org.acme</groupId>
+            <artifactId>rabbitmq-model</artifactId>
+            <version>${revision}${changelist}</version>
+        </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-health</artifactId>

@@ -1,0 +1,19 @@
+@startuml
+!include <archimate/Archimate>
+
+Application_Interface(T1, "requests")
+Application_Interface(T2, "quotes")
+Application_Service(RMQ, "Rabbit MQ")
+Technology_Service(KIND, "K8S in Docker")
+Application_Component(SOURCE, "QuotesResource")
+Application_Component(S1, "QuotesProcessor")
+
+Rel_Access_w(SOURCE, T1)
+Rel_Access_r(S1, T1)
+Rel_Access_w(S1, T2)
+
+Rel_Serving_Up(KIND, RMQ)
+Rel_Serving_Up(RMQ, T1)
+Rel_Serving_Up(RMQ, T2)
+
+@enduml
