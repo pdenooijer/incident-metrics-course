@@ -20,6 +20,8 @@
         <skipITs>true</skipITs>
         <!-- Plugins -->
         <compiler-plugin.version>3.14.0</compiler-plugin.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.release>21</maven.compiler.release>
         <surefire-plugin.version>3.5.3</surefire-plugin.version>
     </properties>
@@ -48,6 +50,7 @@
         </dependencies>
     </dependencyManagement>
 
+    <!-- Dependencies used by all modules can be listed here -->
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>
