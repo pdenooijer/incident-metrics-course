@@ -39,7 +39,6 @@
         <dependency>
             <groupId>org.acme</groupId>
             <artifactId>rabbitmq-model</artifactId>
-            <version>${revision}${changelist}</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
