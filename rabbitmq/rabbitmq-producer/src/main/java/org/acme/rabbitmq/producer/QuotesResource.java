@@ -17,7 +17,7 @@ import io.smallrye.mutiny.Multi;
 @Path("/quotes")
 public class QuotesResource {
 
-    @Channel("requests") Emitter<String> quoteRequestEmitter;
+    @Channel("quote-requests") Emitter<String> quoteRequestEmitter;
 
     @Channel("quotes") Multi<Quote> quotes;
 
