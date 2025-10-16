@@ -1,4 +1,4 @@
 apiVersion: v2
-name: rabbitmq-producer
-description: Hello world service
+name: rabbitmq
+description: Services connected to rabbit-mq
 version: 1.0.0

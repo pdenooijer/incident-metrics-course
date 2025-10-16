@@ -4,6 +4,13 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
 
+## Prerequisites
+You must have the following installed on your machine:
+* podman-desktop - `brew install podman-desktop`
+* Kubernetes in Docker (kind) - `brew install kind`
+* Maven
+* Java 21 or newer
+
 ## Create Kubernetes cluster
 
 A new podman machine will be created that will run the Kubernetes cluster and
