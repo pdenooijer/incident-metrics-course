@@ -1,5 +1,5 @@
-#!/bin/bash -Eeu
-set -o pipefail
+#!/usr/bin/env bash
+set -Eeuo pipefail
 
 # Create kind cluster with containerd registry config dir enabled
 #

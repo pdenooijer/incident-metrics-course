@@ -1,6 +1,5 @@
-#!/bin/bash -Eeu
-set -o pipefail
-
+#!/usr/bin/env bash
+set -Eeuo pipefail
 
 echo "Stopping current VM..."
 search_string="*"
