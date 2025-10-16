@@ -13,14 +13,9 @@ podman push "${hello_world_tag}" --tls-verify=false
 helm upgrade --install hello-world hello-world/helm/ --namespace applications --create-namespace \
   --set version="${version}"
 
-
 processor_tag=${registry}/rabbitmq-processor:${version}
 podman build rabbitmq/rabbitmq-processor/ --file rabbitmq/rabbitmq-processor/src/main/docker/Dockerfile --tag "${processor_tag}"
 podman push "${processor_tag}" --tls-verify=false
-
-# from earlier:
-#helm upgrade --install rabbitmq-processor rabbitmq-processor/helm/ --namespace applications --create-namespace \
-#  --set version="${version}"
 
 producer_tag=${registry}/rabbitmq-producer:${version}
 podman build rabbitmq/rabbitmq-producer/ --file rabbitmq/rabbitmq-producer/src/main/docker/Dockerfile --tag "${producer_tag}"
@@ -28,7 +23,3 @@ podman push "${producer_tag}" --tls-verify=false
 
 helm upgrade --install rabbitmq rabbitmq/helm/ --namespace applications --create-namespace \
   --set version="${version}"
-
-# from earlier:
-#helm upgrade --install rabbitmq-producer rabbitmq-producer/helm/ --namespace applications --create-namespace \
-#  --set version="${version}"
