@@ -4,7 +4,8 @@
     <parent>
         <groupId>nl.ssg.incidentmetricscourse</groupId>
         <artifactId>course</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${revision}${changelist}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>hello-world</artifactId>
