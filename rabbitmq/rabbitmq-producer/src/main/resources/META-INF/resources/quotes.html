@@ -36,7 +36,7 @@
     source.onmessage = (event) => {
         var json = JSON.parse(event.data);
         $(`#${json.id}`).html(function(index, html) {
-            return html.replace("Pending", `\$\xA0${json.price}`);
+            return html.replace("Pending", `\$\xA0${json.price} (duration ${json.duration})`);
         });
     };
 </script>

@@ -4,11 +4,14 @@ import java.util.Random;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
+import jakarta.inject.Inject;
 import org.acme.rabbitmq.model.Quote;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 
 import io.smallrye.reactive.messaging.annotations.Blocking;
+import org.jboss.logging.Logger;
 
 /**
  * A bean consuming data from the "request" RabbitMQ queue and giving out a random quote.
@@ -16,15 +19,25 @@ import io.smallrye.reactive.messaging.annotations.Blocking;
  */
 @ApplicationScoped
 public class QuoteProcessor {
+    private static final Logger LOG = Logger.getLogger(QuoteProcessor.class);
 
-    private Random random = new Random();
+    @Inject
+    @ConfigProperty(name = "processor.duration.min")
+    int minDuration;
+    @Inject
+    @ConfigProperty(name = "processor.duration.max")
+    int maxDuration;
+
+    private final Random random = new Random();
 
     @Incoming("quote-requests")
     @Outgoing("quotes")
     @Blocking
     public Quote process(String quoteRequest) throws InterruptedException {
         // simulate some hard working task
-        Thread.sleep(200);
-        return new Quote(quoteRequest, random.nextInt(100));
+        int wait = Math.round(minDuration + random.nextFloat() * (maxDuration - minDuration));
+        LOG.info("Processing request '" + quoteRequest + "', delay is " + wait);
+        Thread.sleep(wait);
+        return new Quote(quoteRequest, random.nextInt(100), wait);
     }
 }
