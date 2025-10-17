@@ -24,9 +24,14 @@ public class QuoteProcessor {
     @Inject
     @ConfigProperty(name = "processor.duration.min")
     int minDuration;
+
     @Inject
     @ConfigProperty(name = "processor.duration.max")
     int maxDuration;
+
+    @Inject
+    @ConfigProperty(name = "processor.success-rate")
+    float successRate;
 
     private final Random random = new Random();
 
@@ -36,8 +41,12 @@ public class QuoteProcessor {
     public Quote process(String quoteRequest) throws InterruptedException {
         // simulate some hard working task
         int wait = Math.round(minDuration + random.nextFloat() * (maxDuration - minDuration));
-        LOG.info("Processing request '" + quoteRequest + "', delay is " + wait);
+        boolean willSucceed = random.nextFloat() < successRate;
+        LOG.info("Processing request '" + quoteRequest + "', delay is " + wait + ", success-rate is " + successRate + ", willSucceed = " + willSucceed);
         Thread.sleep(wait);
+        if (!willSucceed) {
+            throw new RuntimeException("Failing " + quoteRequest);
+        }
         return new Quote(quoteRequest, random.nextInt(100), wait);
     }
 }
