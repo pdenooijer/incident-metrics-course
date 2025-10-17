@@ -1,5 +1,5 @@
-#!/bin/bash -Eeu
-set -o pipefail
+#!/usr/bin/env bash
+set -Eeuo pipefail
 
 # Create kind cluster with containerd registry config dir enabled
 #
@@ -9,6 +9,10 @@ set -o pipefail
 # See: https://github.com/containerd/containerd/blob/main/docs/hosts.md
 export KIND_EXPERIMENTAL_PROVIDER=podman
 name=incident-metrics-workshop
+
+# Delete the cluster if it already exists
+kind delete cluster --name "${name}" 2>/dev/null || true
+
 cat <<EOF | kind create cluster --name "${name}" --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -43,7 +47,12 @@ EOF
 done
 
 # Connect the registry to the cluster network.
-podman network connect "kind" "${registry_name}"
+if podman network inspect kind | grep -q "\"name\": \"${registry_name}\""; then
+  echo "already connected"
+else
+  echo "connecting network..."
+  podman network connect "kind" "${registry_name}"
+fi
 
 # Document the local registry.
 # https://github.com/kubernetes/enhancements/tree/master/keps/sig-cluster-lifecycle/generic/1755-communicating-a-local-registry

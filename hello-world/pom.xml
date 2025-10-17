@@ -5,6 +5,7 @@
         <groupId>nl.ssg.incidentmetricscourse</groupId>
         <artifactId>course</artifactId>
         <version>${revision}${changelist}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>hello-world</artifactId>
@@ -14,6 +15,16 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
