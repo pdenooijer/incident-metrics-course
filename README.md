@@ -25,6 +25,13 @@ Run this command to create the Kind Kubernetes cluster on the newly created Podm
 ./02-create-cluster.sh
 ```
 
+## Add monitoring stack
+
+```shell script
+./03-monitoring-stack.sh
+```
+
+
 ## Running the applications in dev mode
 
 You can run your application in dev mode that enables live coding using:
@@ -40,5 +47,5 @@ mvn quarkus:dev
 The applications can be packaged, build and run in a single command using:
 
 ```shell script
-./03-build-and-run-services.sh
+./04-build-and-run-services.sh
 ```

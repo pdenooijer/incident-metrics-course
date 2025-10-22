@@ -23,7 +23,7 @@ logstashPipeline:
       }
     }
     
-     output {
+    output {
       elasticsearch {
         hosts => "https://elasticsearch-master:9200"
         cacert => "/usr/share/logstash/config/elasticsearch-master-certs/ca.crt"
