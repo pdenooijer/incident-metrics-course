@@ -9,12 +9,13 @@
         <version>${revision}${changelist}</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
-    <groupId>org.acme</groupId>
+
     <artifactId>rabbitmq-processor</artifactId>
     <version>${revision}${changelist}</version>
+
     <dependencies>
         <dependency>
-            <groupId>org.acme</groupId>
+            <groupId>nl.ssg.incidentmetricscourse</groupId>
             <artifactId>rabbitmq-model</artifactId>
         </dependency>
         <dependency>

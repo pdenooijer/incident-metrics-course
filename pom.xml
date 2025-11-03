@@ -41,7 +41,7 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.acme</groupId>
+                <groupId>nl.ssg.incidentmetricscourse</groupId>
                 <artifactId>rabbitmq-model</artifactId>
                 <version>${revision}${changelist}</version>
             </dependency>

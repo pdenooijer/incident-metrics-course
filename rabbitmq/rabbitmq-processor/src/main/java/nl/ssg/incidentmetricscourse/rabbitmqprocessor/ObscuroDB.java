@@ -1,14 +1,12 @@
-package org.acme.rabbitmq.processor;
+package nl.ssg.incidentmetricscourse.rabbitmqprocessor;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import lombok.experimental.StandardException;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 @ApplicationScoped

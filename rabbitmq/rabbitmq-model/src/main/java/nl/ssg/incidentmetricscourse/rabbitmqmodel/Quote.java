@@ -1,4 +1,4 @@
-package org.acme.rabbitmq.model;
+package nl.ssg.incidentmetricscourse.rabbitmqmodel;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 

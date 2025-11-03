@@ -1,12 +1,11 @@
-package org.acme.rabbitmq.processor;
+package nl.ssg.incidentmetricscourse.rabbitmqprocessor;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import java.util.Random;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Random;
 
 @ApplicationScoped
 @RequiredArgsConstructor

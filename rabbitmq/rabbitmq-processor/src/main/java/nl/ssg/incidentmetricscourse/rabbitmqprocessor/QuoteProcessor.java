@@ -1,15 +1,14 @@
-package org.acme.rabbitmq.processor;
+package nl.ssg.incidentmetricscourse.rabbitmqprocessor;
 
 import io.smallrye.reactive.messaging.annotations.Blocking;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import org.acme.rabbitmq.model.Quote;
+import java.util.Random;
+import nl.ssg.incidentmetricscourse.rabbitmqmodel.Quote;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.jboss.logging.Logger;
-
-import java.util.Random;
 
 /**
  * A bean consuming data from the "request" RabbitMQ queue and giving out a random quote.

@@ -1,10 +1,9 @@
-package org.acme.rabbitmq.processor;
-
-import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
+package nl.ssg.incidentmetricscourse.rabbitmqprocessor;
 
 import java.util.Random;
 import java.util.function.Supplier;
+import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 
 @RequiredArgsConstructor
 public class Flakyness<T> {

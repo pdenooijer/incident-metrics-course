@@ -10,7 +10,6 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <groupId>org.acme</groupId>
     <artifactId>rabbitmq-model</artifactId>
     <version>${revision}${changelist}</version>
 </project>
