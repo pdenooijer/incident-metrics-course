@@ -1,4 +1,4 @@
-package nl.ssg.incidentmetricscourse;
+package nl.ssg.incidentmetricscourse.apigateway;
 
 import io.smallrye.common.annotation.Blocking;
 import jakarta.ws.rs.GET;

@@ -1,4 +1,4 @@
-package nl.ssg.incidentmetricscourse;
+package nl.ssg.incidentmetricscourse.helloworld;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

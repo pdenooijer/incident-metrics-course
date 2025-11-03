@@ -1,4 +1,4 @@
-package nl.ssg.incidentmetricscourse;
+package nl.ssg.incidentmetricscourse.apigateway;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;

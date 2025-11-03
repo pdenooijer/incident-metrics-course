@@ -1,4 +1,4 @@
-package nl.ssg.incidentmetricscourse;
+package nl.ssg.incidentmetricscourse.apigateway;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import java.util.Random;

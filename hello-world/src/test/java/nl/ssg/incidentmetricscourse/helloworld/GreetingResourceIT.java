@@ -1,4 +1,4 @@
-package nl.ssg.incidentmetricscourse;
+package nl.ssg.incidentmetricscourse.helloworld;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 
