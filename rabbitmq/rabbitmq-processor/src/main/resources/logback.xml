@@ -1,0 +1,14 @@
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="co.elastic.logging.logback.EcsEncoder">
+            <!-- Optional: specify the ECS version, default is latest -->
+            <ecsVersion>1.13.0</ecsVersion>
+            <!-- Optional: include stack trace for exceptions -->
+            <includeOrigin>true</includeOrigin>
+        </encoder>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
