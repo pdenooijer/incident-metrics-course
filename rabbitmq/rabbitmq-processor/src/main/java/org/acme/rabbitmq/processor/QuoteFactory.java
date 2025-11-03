@@ -19,7 +19,7 @@ public class QuoteFactory {
 
     public int getQuote(String quoteRequest) {
         log.error("Getting very important value from database!");
-        int veryImportantValue = 0;
+        Integer veryImportantValue = null;
         try {
             veryImportantValue = database.loadValue();
         } catch (Exception e) {
@@ -31,7 +31,7 @@ public class QuoteFactory {
         log.error("Determine request length");
         int quoteRequestLength = quoteRequest.length();
         log.error("Got it!");
-        int quote = random.nextInt(100) + veryImportantValue + quoteRequestLength;
+        int quote = random.nextInt(100) + veryImportantValue.intValue() + quoteRequestLength;
         return quote;
 
     }

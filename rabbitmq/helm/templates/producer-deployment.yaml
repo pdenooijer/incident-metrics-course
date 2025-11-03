@@ -31,9 +31,6 @@ spec:
             capabilities:
               drop:
                 - ALL
-          env:
-            - name: PROCESSOR_DB_SUCCESSRATE
-              value: "0.0"
           resources:
             requests:
               cpu: 1m

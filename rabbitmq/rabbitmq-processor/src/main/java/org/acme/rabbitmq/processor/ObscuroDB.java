@@ -553,7 +553,7 @@ public class ObscuroDB {
         if(true)return Flakyness.<Integer>withRate(successRate)
                 .eitherGet(() -> random.nextInt(100))
                 .or(() -> {
-                    throw new VerySpecificException("Retreived a succesrate from environment, failing on that value.");
+                    throw new VerySpecificException("Retrieved a successrate from environment, failing on that value. Please correct the environment variables in your deployment.");
                 });
 
         for (int i = 0; i < 30; i++) {
