@@ -42,20 +42,20 @@ spec:
               ephemeral-storage: 100Mi
           startupProbe:
             httpGet:
-              path: /hello
+              path: /q/health/started
               port: 8080
             initialDelaySeconds: 3
             periodSeconds: 1
             failureThreshold: 7
           livenessProbe:
             httpGet:
-              path: /hello
+              path: /q/health/live
               port: 8080
             periodSeconds: 60
             failureThreshold: 1
           readinessProbe:
             httpGet:
-              path: /hello
+              path: /q/health/ready
               port: 8080
             periodSeconds: 60
             failureThreshold: 1
