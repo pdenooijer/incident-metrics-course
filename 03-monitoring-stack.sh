@@ -18,6 +18,7 @@ echo "Logstash..."
 helm upgrade --install logstash elastic/logstash --values "$monitoring_path/helm/logstash-values.yml" --namespace monitoring
 
 echo "Kibana..."
+kubectl delete secret kibana-kibana-es-token -n monitoring --ignore-not-found
 kubectl delete configmap kibana-kibana-helm-scripts -n monitoring --ignore-not-found
 kubectl delete serviceaccount pre-install-kibana-kibana -n monitoring --ignore-not-found
 kubectl delete role pre-install-kibana-kibana -n monitoring --ignore-not-found
