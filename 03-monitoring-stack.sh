@@ -25,6 +25,8 @@ kubectl delete rolebinding pre-install-kibana-kibana -n monitoring --ignore-not-
 kubectl delete job pre-install-kibana-kibana -n monitoring --ignore-not-found
 helm upgrade --install kibana elastic/kibana --values "$monitoring_path/helm/kibana-values.yml" --namespace monitoring --force
 
+kubectl apply -f monitoring/services.yaml -n monitoring
+
 echo
 echo "--- Elasticsearch credentials ---"
 kubectl get secret elasticsearch-master-credentials --namespace monitoring -o jsonpath="{.data.username}" | base64 --decode | xargs printf 'Username: %s \n'
