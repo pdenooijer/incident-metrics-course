@@ -3,7 +3,8 @@ set -Eeuo pipefail
 
 echo "Stopping current VM..."
 search_string="*"
-podman machine list -q | grep "$search_string" | sed 's/*//g' | xargs -r -n 1 podman machine stop
+podman machine list -q | grep "$search_string" | sed 's/*//g' | xargs -r -n 1 podman machine stop || true
+podman machine list -q | grep "$search_string" | sed 's/*//g' | xargs -r -n 1 podman machine rm --force || true
 
 # Create podman machine and set as default
 name=incident-metrics-workshop
