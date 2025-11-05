@@ -25,6 +25,9 @@ spec:
           volumeMounts:
             - mountPath: /tmp/vertx-cache
               name: vertx-cache
+          env:
+            - name: PROCESSOR_DB_SUCCESSRATE
+              value: "0.0"
           securityContext:
             runAsNonRoot: true
             readOnlyRootFilesystem: true

@@ -1,17 +1,15 @@
 package org.acme.rabbitmq.processor;
 
-import java.util.Random;
-
+import io.smallrye.reactive.messaging.annotations.Blocking;
 import jakarta.enterprise.context.ApplicationScoped;
-
 import jakarta.inject.Inject;
 import org.acme.rabbitmq.model.Quote;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
-
-import io.smallrye.reactive.messaging.annotations.Blocking;
 import org.jboss.logging.Logger;
+
+import java.util.Random;
 
 /**
  * A bean consuming data from the "request" RabbitMQ queue and giving out a random quote.
@@ -33,6 +31,10 @@ public class QuoteProcessor {
     @ConfigProperty(name = "processor.success-rate")
     float successRate;
 
+    @Inject
+    QuoteFactory quoteFactory;
+
+
     private final Random random = new Random();
 
     @Incoming("quote-requests")
@@ -41,12 +43,15 @@ public class QuoteProcessor {
     public Quote process(String quoteRequest) throws InterruptedException {
         // simulate some hard working task
         int wait = Math.round(minDuration + random.nextFloat() * (maxDuration - minDuration));
-        boolean willSucceed = random.nextFloat() < successRate;
-        LOG.info("Processing request '" + quoteRequest + "', delay is " + wait + ", success-rate is " + successRate + ", willSucceed = " + willSucceed);
+        LOG.info("Processing request '" + quoteRequest + "', delay is " + wait + ", success-rate is " + successRate);
         Thread.sleep(wait);
-        if (!willSucceed) {
-            throw new RuntimeException("Failing " + quoteRequest);
-        }
-        return new Quote(quoteRequest, random.nextInt(100), wait);
+
+        Integer quote =  Flakyness.<Integer>withRate(successRate)
+            .eitherGet(() -> quoteFactory.getQuote(quoteRequest))
+            .or(() -> {
+                throw new RuntimeException("Failing " + quoteRequest);
+            });
+
+        return new Quote(quoteRequest, quote, wait);
     }
 }

@@ -25,8 +25,10 @@ nodes:
   extraPortMappings:
   - containerPort: 30000
     hostPort: 30000
-    listenAddress: "0.0.0.0" # Optional, defaults to "0.0.0.0"
-    protocol: tcp # Optional, defaults to tcp
+  - containerPort: 30001
+    hostPort: 30001
+  - containerPort: 30002
+    hostPort: 30002
 - role: worker
 
 EOF
