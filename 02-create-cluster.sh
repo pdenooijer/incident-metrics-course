@@ -58,7 +58,7 @@ fi
 
 # Document the local registry.
 # https://github.com/kubernetes/enhancements/tree/master/keps/sig-cluster-lifecycle/generic/1755-communicating-a-local-registry
-cat <<EOF | kubectl apply -f -
+cat <<EOF | kubectl apply --filename -
 apiVersion: v1
 kind: ConfigMap
 metadata:

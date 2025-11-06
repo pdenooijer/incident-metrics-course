@@ -18,15 +18,15 @@ echo "Logstash..."
 helm upgrade --install logstash elastic/logstash --values "$monitoring_path/helm/logstash-values.yml" --namespace monitoring
 
 echo "Kibana..."
-kubectl delete secret kibana-kibana-es-token -n monitoring --ignore-not-found
-kubectl delete configmap kibana-kibana-helm-scripts -n monitoring --ignore-not-found
-kubectl delete serviceaccount pre-install-kibana-kibana -n monitoring --ignore-not-found
-kubectl delete role pre-install-kibana-kibana -n monitoring --ignore-not-found
-kubectl delete rolebinding pre-install-kibana-kibana -n monitoring --ignore-not-found
-kubectl delete job pre-install-kibana-kibana -n monitoring --ignore-not-found
+kubectl delete secret kibana-kibana-es-token --namespace monitoring --ignore-not-found
+kubectl delete configmap kibana-kibana-helm-scripts --namespace monitoring --ignore-not-found
+kubectl delete serviceaccount pre-install-kibana-kibana --namespace monitoring --ignore-not-found
+kubectl delete role pre-install-kibana-kibana --namespace monitoring --ignore-not-found
+kubectl delete rolebinding pre-install-kibana-kibana --namespace monitoring --ignore-not-found
+kubectl delete job pre-install-kibana-kibana --namespace monitoring --ignore-not-found
 helm upgrade --install kibana elastic/kibana --values "$monitoring_path/helm/kibana-values.yml" --namespace monitoring --force
 
-kubectl apply -f "$monitoring_path/helm/node-ports.yml"
+kubectl apply --filename "$monitoring_path/helm/node-ports.yml"
 
 echo
 echo "--- Elasticsearch credentials ---"
