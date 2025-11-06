@@ -43,3 +43,9 @@ fi
 # Document the local registry.
 # https://github.com/kubernetes/enhancements/tree/master/keps/sig-cluster-lifecycle/generic/1755-communicating-a-local-registry
 kubectl apply --filename "$cluster_path/local-registry-configmap.yml"
+
+# Install ingress
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update ingress-nginx
+
+helm install ingress-nginx ingress-nginx/ingress-nginx --values "$cluster_path/ingress-nginx-values.yml"
