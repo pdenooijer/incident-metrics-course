@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
+cluster_path=$(dirname "$0")/cluster
+
 # Create kind cluster with containerd registry config dir enabled
 #
 # See:
@@ -13,23 +15,7 @@ name=incident-metrics-workshop
 # Delete the cluster if it already exists
 kind delete cluster --name "${name}" 2>/dev/null || true
 
-cat <<EOF | kind create cluster --name "${name}" --config=-
-kind: Cluster
-apiVersion: kind.x-k8s.io/v1alpha4
-containerdConfigPatches:
-- |-
-  [plugins."io.containerd.grpc.v1.cri".registry]
-    config_path = "/etc/containerd/certs.d"
-nodes:
-- role: control-plane
-  extraPortMappings:
-  - containerPort: 30000
-    hostPort: 30000
-  - containerPort: 30001
-    hostPort: 30001
-  - containerPort: 30002
-    hostPort: 30002
-EOF
+kind create cluster --name "${name}" --config="$cluster_path/kind-cluster.yml"
 
 # Add the registry config to the nodes
 #
@@ -41,7 +27,7 @@ registry_port='5001'
 registry_dir="/etc/containerd/certs.d/localhost:${registry_port}"
 for node in $(kind get nodes --name "${name}"); do
   podman exec "${node}" mkdir -p "${registry_dir}"
-  cat <<EOF | podman exec -i "${node}" cp /dev/stdin "${registry_dir}/hosts.toml"
+  cat <<EOF | podman exec --interactive "${node}" cp /dev/stdin "${registry_dir}/hosts.toml"
 [host."http://${registry_name}:5000"]
 EOF
 done
@@ -56,14 +42,4 @@ fi
 
 # Document the local registry.
 # https://github.com/kubernetes/enhancements/tree/master/keps/sig-cluster-lifecycle/generic/1755-communicating-a-local-registry
-cat <<EOF | kubectl apply --filename -
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: local-registry-hosting
-  namespace: kube-public
-data:
-  localRegistryHosting.v1: |
-    host: "localhost:${registry_port}"
-    help: "https://kind.sigs.k8s.io/docs/user/local-registry/"
-EOF
+kubectl apply --filename "$cluster_path/local-registry-configmap.yml"
