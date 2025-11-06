@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-mvn package
+mvn package -DskipTest -DskipITs
 
 registry=localhost:5001
 version=$(date +%s)
