@@ -9,13 +9,13 @@ helm repo update elastic
 echo "--- Installing ---"
 
 echo "Elasticsearch..."
-helm upgrade --install elasticsearch elastic/elasticsearch --values "$monitoring_path/helm/elasticsearch-values.yml" --namespace monitoring --create-namespace
+helm upgrade --install elasticsearch elastic/elasticsearch --values "$monitoring_path/elasticsearch-values.yml" --namespace monitoring --create-namespace
 
 echo "Filebeat..."
-helm upgrade --install filebeat elastic/filebeat --values "$monitoring_path/helm/filebeat-values.yml" --namespace monitoring
+helm upgrade --install filebeat elastic/filebeat --values "$monitoring_path/filebeat-values.yml" --namespace monitoring
 
 echo "Logstash..."
-helm upgrade --install logstash elastic/logstash --values "$monitoring_path/helm/logstash-values.yml" --namespace monitoring
+helm upgrade --install logstash elastic/logstash --values "$monitoring_path/logstash-values.yml" --namespace monitoring
 
 echo "Kibana..."
 kubectl delete secret kibana-kibana-es-token --namespace monitoring --ignore-not-found
@@ -24,9 +24,9 @@ kubectl delete serviceaccount pre-install-kibana-kibana --namespace monitoring -
 kubectl delete role pre-install-kibana-kibana --namespace monitoring --ignore-not-found
 kubectl delete rolebinding pre-install-kibana-kibana --namespace monitoring --ignore-not-found
 kubectl delete job pre-install-kibana-kibana --namespace monitoring --ignore-not-found
-helm upgrade --install kibana elastic/kibana --values "$monitoring_path/helm/kibana-values.yml" --namespace monitoring --force
+helm upgrade --install kibana elastic/kibana --values "$monitoring_path/kibana-values.yml" --namespace monitoring --force
 
-kubectl apply --filename "$monitoring_path/helm/node-ports.yml"
+kubectl apply --filename "$monitoring_path/node-ports.yml"
 
 echo
 echo "--- Elasticsearch credentials ---"
