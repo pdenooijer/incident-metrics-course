@@ -33,13 +33,13 @@ spec:
                 - ALL
           resources:
             requests:
-              cpu: 1m
-              memory: 100Mi
-              ephemeral-storage: 1Mi
+              memory: "128Mi"
+              cpu: "250m"
+              ephemeral-storage: "1Mi"
             limits:
-              cpu: "1"
-              memory: 256Mi
-              ephemeral-storage: 100Mi
+              memory: "1024Mi"
+              cpu: "1000m"
+              ephemeral-storage: "100Mi"
       volumes:
         - name: vertx-cache
           emptyDir: { }
