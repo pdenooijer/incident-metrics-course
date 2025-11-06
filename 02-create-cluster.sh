@@ -29,8 +29,6 @@ nodes:
     hostPort: 30001
   - containerPort: 30002
     hostPort: 30002
-- role: worker
-
 EOF
 
 # Add the registry config to the nodes
