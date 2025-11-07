@@ -12,6 +12,10 @@ replicas: 1
 extraEnvs:
   - name: "NODE_OPTIONS"
     value: "--max-old-space-size=1800"
+  - name: SERVER_BASEPATH
+    value: "/kibana"
+  - name: SERVER_REWRITEBASEPATH
+    value: "true"
 #  - name: MY_ENVIRONMENT_VAR
 #    value: the_value_goes_here
 
@@ -61,7 +65,7 @@ protocol: http
 
 serverHost: "0.0.0.0"
 
-healthCheckPath: "/app/kibana"
+healthCheckPath: "/kibana/app/kibana"
 
 # Allows you to add any config files in /usr/share/kibana/config/
 # such as kibana.yml
@@ -120,7 +124,7 @@ updateStrategy:
   type: "Recreate"
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   loadBalancerIP: ""
   port: 5601
   nodePort: ""
@@ -136,16 +140,15 @@ service:
   httpPortName: http
 
 ingress:
-  enabled: false
+  enabled: true
   className: "nginx"
-  pathtype: ImplementationSpecific
+  pathtype: Prefix
   annotations: {}
   # kubernetes.io/ingress.class: nginx
   # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: kibana-example.local
-      paths:
-        - path: /
+    - paths:
+        - path: /kibana
   #tls: []
   #  - secretName: chart-example-tls
   #    hosts:

@@ -1,2 +1,2 @@
 ###
-POST http://localhost:30000/quotes/request
+POST http://localhost:30080/rabbitmq/quotes/request

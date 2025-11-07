@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rabbitmq-producer
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /rabbitmq(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: rabbitmq-producer-service
+                port:
+                  number: 80

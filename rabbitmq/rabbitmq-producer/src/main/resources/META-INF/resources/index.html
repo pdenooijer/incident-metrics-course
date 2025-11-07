@@ -22,6 +22,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    const basePath = globalThis.location.pathname === "/" ? "" : globalThis.location.pathname;
     let loopInterval;
 
     $(document).ready(function() {
@@ -44,7 +45,7 @@
     $("#request-quote").click(() => {
         if (!loopInterval) {
             loopInterval = setInterval(function() {
-                fetch("/quotes/request", {
+                fetch(basePath + "/quotes/request", {
                     method: "POST"
                 })
                     .then(res => res.text())
@@ -55,7 +56,7 @@
             }, 1000); // elke seconde
         }
     });
-    const source = new EventSource("/quotes");
+    const source = new EventSource(basePath + "/quotes");
     source.onmessage = (event) => {
         const json = JSON.parse(event.data);
         $(`#${json.id}`).html(function(index, html) {

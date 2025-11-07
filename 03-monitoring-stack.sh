@@ -29,8 +29,6 @@ helm upgrade --install kibana elastic/kibana --values "$monitoring_path/kibana-v
 echo "APM..."
 helm upgrade --install apm-server elastic/apm-server --namespace monitoring --values "$monitoring_path/apm-values.yml"
 
-kubectl apply --filename "$monitoring_path/node-ports.yml"
-
 echo
 echo "--- Elasticsearch credentials ---"
 kubectl get secret elasticsearch-master-credentials --namespace monitoring -o jsonpath="{.data.username}" | base64 --decode | xargs printf 'Username: %s \n'
