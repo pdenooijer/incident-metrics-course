@@ -20,6 +20,6 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: rabbitmq-producer-service
+                name: rabbitmq-producer
                 port:
                   number: 80
