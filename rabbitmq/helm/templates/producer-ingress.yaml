@@ -2,6 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: rabbitmq-producer
+  labels:
+    helm.sh/chart: rabbitmq-{{ .Values.version }}
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: rabbitmq
+    app.kubernetes.io/version: "{{ .Values.version }}"
+    app.kubernetes.io/component: application
+    app.kubernetes.io/managed-by: Helm
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:

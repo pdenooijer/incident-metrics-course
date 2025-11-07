@@ -3,6 +3,12 @@ kind: Deployment
 metadata:
   name: rabbitmq-processor
   labels:
+    helm.sh/chart: rabbitmq-{{ .Values.version }}
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: rabbitmq
+    app.kubernetes.io/version: "{{ .Values.version }}"
+    app.kubernetes.io/component: application
+    app.kubernetes.io/managed-by: Helm
     app: rabbitmq-processor
 spec:
   replicas: 2

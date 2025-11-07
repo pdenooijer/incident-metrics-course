@@ -3,6 +3,12 @@ kind: Deployment
 metadata:
   name: api-gateway
   labels:
+    helm.sh/chart: api-gateway-{{ .Values.version }}
+    app.kubernetes.io/name: api-gateway
+    app.kubernetes.io/instance: api-gateway
+    app.kubernetes.io/version: "{{ .Values.version }}"
+    app.kubernetes.io/component: application
+    app.kubernetes.io/managed-by: Helm
     app: api-gateway
 spec:
   replicas: 1

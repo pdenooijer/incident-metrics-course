@@ -2,6 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rabbitmq-service
+  labels:
+    helm.sh/chart: rabbitmq-{{ .Values.version }}
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: rabbitmq
+    app.kubernetes.io/version: "{{ .Values.version }}"
+    app.kubernetes.io/component: application
+    app.kubernetes.io/managed-by: Helm
 spec:
   selector:
     app: rabbitmq
@@ -14,4 +21,3 @@ spec:
       port: 15672
       targetPort: 15672
       name: management
-  type: ClusterIP

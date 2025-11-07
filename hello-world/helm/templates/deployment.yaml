@@ -3,6 +3,12 @@ kind: Deployment
 metadata:
   name: hello-world
   labels:
+    helm.sh/chart: hello-world-{{ .Values.version }}
+    app.kubernetes.io/name: hello-world
+    app.kubernetes.io/instance: hello-world
+    app.kubernetes.io/version: "{{ .Values.version }}"
+    app.kubernetes.io/component: application
+    app.kubernetes.io/managed-by: Helm
     app: hello-world
 spec:
   replicas: 1
