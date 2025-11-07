@@ -22,15 +22,38 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    let loopInterval;
+
+    $(document).ready(function() {
+        $("#startLoop").click(function() {
+            if (!loopInterval) {
+                loopInterval = setInterval(function() {
+                    console.log("here");
+                }, 1000); // elke seconde
+            }
+        });
+
+        $("#stopLoop").click(function() {
+            if (loopInterval) {
+                clearInterval(loopInterval);
+                loopInterval = null;
+            }
+        });
+    });
+
     $("#request-quote").click((event) => {
-        fetch("/quotes/request", {
-                method: "POST"
-            })
-            .then(res => res.text())
-            .then(qid => {
-                var row = $(`<h4 class='col-md-12' id='${qid}'>Quote # <i>${qid}</i> | <strong>Pending</strong></h4>`);
-                $(".quotes").append(row);
-            });
+        if (!loopInterval) {
+            loopInterval = setInterval(function() {
+                fetch("/quotes/request", {
+                    method: "POST"
+                })
+                    .then(res => res.text())
+                    .then(qid => {
+                        var row = $(`<h4 class='col-md-12' id='${qid}'>Quote # <i>${qid}</i> | <strong>Pending</strong></h4>`);
+                        $(".quotes").append(row);
+                    });
+            }, 1000); // elke seconde
+        }
     });
     var source = new EventSource("/quotes");
     source.onmessage = (event) => {
