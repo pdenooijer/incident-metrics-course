@@ -95,6 +95,13 @@ T.b.d. something like:
 
 ---
 
+# Logging 
+**Lessons learned**
+
+Plenary discussion of guidelines
+
+---
+
 ## 1️⃣ Overly Verbose Logging ("Log Spam")
 
 **Symptom:** Thousands of log lines per minute, even under normal load.  
@@ -263,9 +270,3 @@ table {
 * No sensitive data
 * Consistent structure
 * Traceability across systems
-
----
-
-
-
-```markdown
