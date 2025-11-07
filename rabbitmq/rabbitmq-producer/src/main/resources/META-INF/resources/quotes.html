@@ -41,7 +41,7 @@
         });
     });
 
-    $("#request-quote").click((event) => {
+    $("#request-quote").click(() => {
         if (!loopInterval) {
             loopInterval = setInterval(function() {
                 fetch("/quotes/request", {
@@ -49,17 +49,17 @@
                 })
                     .then(res => res.text())
                     .then(qid => {
-                        var row = $(`<h4 class='col-md-12' id='${qid}'>Quote # <i>${qid}</i> | <strong>Pending</strong></h4>`);
+                        const row = $(`<h4 class='col-md-12' id='${qid}'>Quote # <i>${qid}</i> | <strong>Pending</strong></h4>`);
                         $(".quotes").append(row);
                     });
             }, 1000); // elke seconde
         }
     });
-    var source = new EventSource("/quotes");
+    const source = new EventSource("/quotes");
     source.onmessage = (event) => {
-        var json = JSON.parse(event.data);
+        const json = JSON.parse(event.data);
         $(`#${json.id}`).html(function(index, html) {
-            return html.replace("Pending", `\$\xA0${json.price} (duration ${json.duration})`);
+            return html.replace("Pending", `$\xA0${json.price} (duration ${json.duration})`);
         });
     };
 </script>
