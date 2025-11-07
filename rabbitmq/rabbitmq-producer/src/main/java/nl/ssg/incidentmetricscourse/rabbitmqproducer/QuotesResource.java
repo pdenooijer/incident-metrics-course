@@ -10,9 +10,11 @@ import java.util.UUID;
 import nl.ssg.incidentmetricscourse.rabbitmqmodel.Quote;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
+import org.jboss.logging.Logger;
 
 @Path("/quotes")
 public class QuotesResource {
+    private static final Logger LOG = Logger.getLogger(QuotesResource.class);
 
     @Channel("quote-requests") Emitter<String> quoteRequestEmitter;
 
@@ -36,6 +38,8 @@ public class QuotesResource {
     public String createRequest() {
         UUID uuid = UUID.randomUUID();
         quoteRequestEmitter.send(uuid.toString());
+
+        LOG.info("Requested a quote, generated correlation id: " + uuid);
         return uuid.toString();
     }
 }

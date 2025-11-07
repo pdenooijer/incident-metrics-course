@@ -26,6 +26,9 @@ kubectl delete rolebinding pre-install-kibana-kibana --namespace monitoring --ig
 kubectl delete job pre-install-kibana-kibana --namespace monitoring --ignore-not-found
 helm upgrade --install kibana elastic/kibana --values "$monitoring_path/kibana-values.yml" --namespace monitoring --force
 
+echo "APM..."
+helm upgrade --install apm-server elastic/apm-server --namespace monitoring --values "$monitoring_path/apm-values.yml"
+
 kubectl apply --filename "$monitoring_path/node-ports.yml"
 
 echo

@@ -92,7 +92,15 @@ COPY --chown=185 target/quarkus-app/quarkus/ /deployments/quarkus/
 
 EXPOSE 8080
 USER 185
-ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager -Delastic.apm.verify_server_cert=false -Delastic.apm.log_level=INFO -Delastic.apm.service_name=processor -Delastic.apm.server_urls=http://apm-server-apm-server.monitoring:8200 -Delastic.apm.secret_token= -Delastic.apm.environment=production -Delastic.apm.application_packages=org"
+ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager \
+  -Delastic.apm.rabbitmq_naming_mode=QUEUE \
+  -Delastic.apm.verify_server_cert=false\
+  -Delastic.apm.log_level=TRACE\
+  -Delastic.apm.service_name=processor\
+  -Delastic.apm.server_urls=http://apm-server-apm-server.monitoring:8200\
+  -Delastic.apm.secret_token=\
+  -Delastic.apm.environment=production\
+  -Delastic.apm.application_packages=nl.ssg.incidentmetricscourse"
 ENV JAVA_APP_JAR="/deployments/quarkus-run.jar"
 ENV JAVA_TOOL_OPTIONS="-javaagent:/deployments/lib/elastic-apm-agent.jar"
 
