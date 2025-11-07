@@ -39,12 +39,12 @@ spec:
                 - ALL
           resources:
             requests:
+              cpu: "1m"
               memory: "128Mi"
-              cpu: "250m"
               ephemeral-storage: "1Mi"
             limits:
-              memory: "1024Mi"
-              cpu: "1000m"
+              cpu: "1"
+              memory: "512Mi"
               ephemeral-storage: "100Mi"
       volumes:
         - name: vertx-cache
