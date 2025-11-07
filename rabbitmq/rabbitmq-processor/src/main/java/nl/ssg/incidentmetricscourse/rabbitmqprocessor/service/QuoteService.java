@@ -12,15 +12,15 @@ import org.slf4j.LoggerFactory;
 @ApplicationScoped
 @RequiredArgsConstructor
 public class QuoteService {
-    private Random random = new Random();
+    private final Random random = new Random();
     private static final Logger log = LoggerFactory.getLogger("");
 
     @Inject
     ObscuroDB database;
 
-    public int getQuote(String quoteRequest) throws QuoteServiceException {
+    public int getQuote(String quoteRequest) {
         log.error("Getting very important value from database!");
-        Integer veryImportantValue = null;
+        Integer veryImportantValue;
         try {
             veryImportantValue = database.loadValue();
         } catch (Exception e) {
@@ -33,13 +33,10 @@ public class QuoteService {
         log.error("Determine request length");
         int quoteRequestLength = quoteRequest.length();
         log.error("Got it!");
-        int quote = random.nextInt(100) + veryImportantValue.intValue() + quoteRequestLength;
-        return quote;
-
+        return random.nextInt(100) + veryImportantValue + quoteRequestLength;
     }
 
-
     @StandardException
-    public static class QuoteServiceException extends Throwable {
+    public static class QuoteServiceException extends RuntimeException {
     }
 }
