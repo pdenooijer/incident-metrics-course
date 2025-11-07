@@ -1,4 +1,4 @@
-package nl.ssg.incidentmetricscourse.rabbitmqprocessor;
+package nl.ssg.incidentmetricscourse.rabbitmqprocessor.persistence;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -6,8 +6,12 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import lombok.experimental.StandardException;
 import lombok.extern.slf4j.Slf4j;
+import nl.ssg.incidentmetricscourse.rabbitmqprocessor.Flakyness;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+/**
+ * A very obscure database client
+ */
 @Slf4j
 @ApplicationScoped
 public class ObscuroDB {

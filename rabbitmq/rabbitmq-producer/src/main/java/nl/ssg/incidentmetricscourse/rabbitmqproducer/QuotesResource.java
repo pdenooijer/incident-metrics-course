@@ -39,7 +39,7 @@ public class QuotesResource {
         UUID uuid = UUID.randomUUID();
         quoteRequestEmitter.send(uuid.toString());
 
-        LOG.info("Requested a quote, generated correlation id: " + uuid);
+        LOG.info("User 'workshop-user' requested a quote. Generated correlation id: " + uuid);
         return uuid.toString();
     }
 }

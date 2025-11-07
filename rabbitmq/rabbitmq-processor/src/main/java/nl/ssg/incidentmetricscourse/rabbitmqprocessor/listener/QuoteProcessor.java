@@ -1,10 +1,12 @@
-package nl.ssg.incidentmetricscourse.rabbitmqprocessor;
+package nl.ssg.incidentmetricscourse.rabbitmqprocessor.listener;
 
 import io.smallrye.reactive.messaging.annotations.Blocking;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import java.util.Random;
 import nl.ssg.incidentmetricscourse.rabbitmqmodel.Quote;
+import nl.ssg.incidentmetricscourse.rabbitmqprocessor.Flakyness;
+import nl.ssg.incidentmetricscourse.rabbitmqprocessor.service.QuoteService;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
@@ -16,7 +18,7 @@ import org.jboss.logging.Logger;
  */
 @ApplicationScoped
 public class QuoteProcessor {
-    private static final Logger LOG = Logger.getLogger(QuoteProcessor.class);
+    private static final Logger log = Logger.getLogger(QuoteProcessor.class);
 
     @Inject
     @ConfigProperty(name = "processor.duration.min")
@@ -31,7 +33,7 @@ public class QuoteProcessor {
     float successRate;
 
     @Inject
-    QuoteFactory quoteFactory;
+    QuoteService quoteService;
 
 
     private final Random random = new Random();
@@ -42,14 +44,20 @@ public class QuoteProcessor {
     public Quote process(String quoteRequest) throws InterruptedException {
         // simulate some hard working task
         int wait = Math.round(minDuration + random.nextFloat() * (maxDuration - minDuration));
-        LOG.info("Processing request '" + quoteRequest + "', delay is " + wait + ", success-rate is " + successRate);
+        log.info("Processing request '" + quoteRequest + "', delay is " + wait + ", success-rate is " + successRate);
         Thread.sleep(wait);
 
-        Integer quote =  Flakyness.<Integer>withRate(successRate)
-            .eitherGet(() -> quoteFactory.getQuote(quoteRequest))
-            .or(() -> {
-                throw new RuntimeException("Failing " + quoteRequest);
-            });
+        Integer quote = null;
+        try {
+            quote = Flakyness.<Integer>withRate(successRate)
+                .eitherGet(() -> quoteService.getQuote(quoteRequest))
+                .or(() -> {
+                    throw new RuntimeException("Failing " + quoteRequest);
+                });
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw e;
+        }
 
         return new Quote(quoteRequest, quote, wait);
     }
