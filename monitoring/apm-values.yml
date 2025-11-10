@@ -147,7 +147,7 @@ autoscaling:
   averageCpuUtilization: 50
 
 ingress:
-  enabled: true
+  enabled: false
   className: "nginx"
   pathtype: ImplementationSpecific
   annotations: {}
