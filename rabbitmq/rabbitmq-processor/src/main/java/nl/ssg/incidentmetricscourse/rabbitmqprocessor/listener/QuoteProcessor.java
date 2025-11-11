@@ -4,6 +4,8 @@ import io.smallrye.reactive.messaging.annotations.Blocking;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import java.util.Random;
+
+import lombok.extern.slf4j.Slf4j;
 import nl.ssg.incidentmetricscourse.rabbitmqmodel.Quote;
 import nl.ssg.incidentmetricscourse.rabbitmqprocessor.Flakyness;
 import nl.ssg.incidentmetricscourse.rabbitmqprocessor.service.QuoteService;
@@ -16,9 +18,9 @@ import org.jboss.logging.Logger;
  * A bean consuming data from the "request" RabbitMQ queue and giving out a random quote.
  * The result is pushed to the "quotes" RabbitMQ exchange.
  */
+@Slf4j
 @ApplicationScoped
 public class QuoteProcessor {
-    private static final Logger log = Logger.getLogger(QuoteProcessor.class);
 
     @Inject
     @ConfigProperty(name = "processor.duration.min")

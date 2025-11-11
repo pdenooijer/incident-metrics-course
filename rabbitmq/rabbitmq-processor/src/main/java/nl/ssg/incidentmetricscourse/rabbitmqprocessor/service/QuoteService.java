@@ -5,6 +5,7 @@ import jakarta.inject.Inject;
 import java.util.Random;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.StandardException;
+import lombok.extern.slf4j.Slf4j;
 import nl.ssg.incidentmetricscourse.rabbitmqprocessor.persistence.ObscuroDB;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,8 +13,9 @@ import org.slf4j.LoggerFactory;
 @ApplicationScoped
 @RequiredArgsConstructor
 public class QuoteService {
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger("l");
+
     private final Random random = new Random();
-    private static final Logger log = LoggerFactory.getLogger("");
 
     @Inject
     ObscuroDB database;
@@ -24,7 +26,7 @@ public class QuoteService {
         try {
             veryImportantValue = database.loadValue();
         } catch (Exception e) {
-            log.error("Something went terribly wrong!");
+            log.error("Oops... something went terribly wrong!");
             log.error("Error loading value from database!");
             log.error("This should never happen!");
             throw new QuoteServiceException("Something went terribly wrong!");
