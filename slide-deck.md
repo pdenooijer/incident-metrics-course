@@ -64,12 +64,13 @@ T.b.d. something like:
 
 - Install podman desktop
 - Clone repo: github.com:pdenooijer/incident-metrics-course.git
-- Run scripts 01 t/m 04 in project root
-- Open http://localhost:30000/quotes.html and start getting quotes
+- Follow the instructions in the README
  
 ---
 
 # Logging 
+<!-- 09:30 - 09:40 --> 
+
 **Exercise 1: Review the logging in Elastic Search**
 
 - What do you notice? 
@@ -78,6 +79,8 @@ T.b.d. something like:
 ---
 
 # Logging 
+<!-- 09:30 - 09:50 --> 
+
 **Exercise 2: Review  the code in the repository**
 
 - What do you notice? 
@@ -87,6 +90,8 @@ T.b.d. something like:
 ---
 
 # Logging 
+<!-- 09:50 - 10:10 --> 
+
 **Exercise 3: Setup some guidelines for your team**
 
 - Define what makes 'proper' logging 
@@ -96,6 +101,8 @@ T.b.d. something like:
 ---
 
 # Logging 
+<!-- 10:25 - 10:45 -->
+
 **Lessons learned**
 
 Plenary discussion of guidelines
@@ -270,3 +277,42 @@ table {
 * No sensitive data
 * Consistent structure
 * Traceability across systems
+
+--- 
+
+# Metrics
+<!-- 10:45 - 12:00 -->
+
+- Wat meten we?
+  - Platform monitoring vs application monitoring
+  - RED / USE / 4 golden signals
+   
+- Welke tools zijn er? 
+  - Grafana/Prometheus
+  - Elastic APM
+  - Azure Application Insights 
+  - AWS X-Ray
+
+
+--- 
+
+# Lunch
+<!-- 10:45 - 12:00 -->
+
+
+
+
+--- 
+
+# Alerting
+<!-- 13:00 - 14:30 -->
+
+
+
+--- 
+
+# Tracing
+<!-- 14:30 - 15:00 -->
+
+
+
