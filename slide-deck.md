@@ -40,27 +40,71 @@ T.b.d. something like:
 
 ---
 
+# But first... meet the team!
+<style scoped>
+p {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 80%; /* Adjust height as needed */
+}
+p img {
+flex-grow: 1;
+max-width: 18%; 
+max-height: 100%;
+object-fit: contain;
+margin: 0 10px; /* Add some horizontal space between images */
+}
+</style>
+
+![po-anna.png](img/po-anna.png)
+![junior-mark.png](img/junior-mark.png)
+![medior-alex.png](img/medior-alex.png)
+![senior-arthur.png](img/senior-arthur.png)
+![tester-nia.png](img/tester-nia.png)  
+
+---
+
 # Logging - why logging matters
 
 - Essential for **monitoring**, **debugging**, and **auditing**
 - Helps identify issues before users notice them
 - Enables better **incident response** and **root cause analysis**
 
-> “If it’s not logged, it didn’t happen.”
+> If it’s not logged, it didn’t happen.
 
 ---
 
 # Logging - what makes good logging
+## Logging ≠ Print Statements
 
-- Essential for **monitoring**, **debugging**, and **auditing**
-- Helps identify issues before users notice them
-- Enables better **incident response** and **root cause analysis**
+> Logging is part of your **observability strategy**, not just debugging.
 
-> “If it’s not logged, it didn’t happen.”
+- Logs should explain **why** something happened — not just *what* happened.
+- Think in terms of **diagnostics**, **accountability**, and **operational insight**.
+- Good logs shorten **MTTR** (Mean Time To Recovery).
+
+🧠 *Design logs as you design APIs: intentional and structured.*
 
 ---
 
-# Setup
+# Logging - what makes good logging
+## Structure and Context
+
+> Flat text is dead — context-rich, structured logs rule.
+
+- Prefer **structured (JSON)** logging.
+- Include context, etc. in every log.
+- Use **MDC (Mapped Diagnostic Context)** to propagate metadata.
+
+```java
+MDC.put("requestId", requestId);
+log.info("Order processed: {}", orderId);
+MDC.clear();
+```
+---
+
+# Let's dive in!
 
 - Install podman desktop
 - Clone repo: github.com:pdenooijer/incident-metrics-course.git
@@ -265,6 +309,9 @@ table {
 | `WARN`  | Potential issues | Fallbacks, retries                        |
 | `ERROR` | Failures | Exceptions, failed transactions           |
 | `FATAL` | Failures | Non-recoverable error that cause downtime |
+
+Experienced developers know: log level inflation kills signal-to-noise ratio.
+Keep verbosity low in production — more logs ≠ more visibility.
 
 --- 
 
