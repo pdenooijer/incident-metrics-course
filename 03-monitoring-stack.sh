@@ -4,7 +4,8 @@ set -Eeuo pipefail
 monitoring_path=$(dirname "$0")/monitoring
 
 helm repo add elastic https://helm.elastic.co
-helm repo update elastic
+helm repo add prometheus https://prometheus-community.github.io/helm-charts
+helm repo update elastic prometheus
 
 echo "--- Installing ---"
 
@@ -26,10 +27,19 @@ kubectl delete rolebinding pre-install-kibana-kibana --namespace monitoring --ig
 kubectl delete job pre-install-kibana-kibana --namespace monitoring --ignore-not-found
 helm upgrade --install kibana elastic/kibana --values "$monitoring_path/kibana-values.yml" --namespace monitoring --force
 
+echo "Prometheus & Grafana..."
+helm upgrade --install prometheus prometheus-community/kube-prometheus-stack \
+  --values "$monitoring_path/prometheus-values.yml" --namespace monitoring
+
 echo "APM..."
 helm upgrade --install apm-server elastic/apm-server --namespace monitoring --values "$monitoring_path/apm-values.yml"
 
 echo
-echo "--- Elasticsearch credentials ---"
+echo "--- Prometheus & Grafana credentials ---"
+kubectl --namespace monitoring get secrets prometheus-grafana -o jsonpath="{.data.admin-user}" | base64 --decode | xargs printf 'Username: %s \n'
+kubectl --namespace monitoring get secrets prometheus-grafana -o jsonpath="{.data.admin-password}" | base64 --decode | xargs printf 'Password: %s \n'
+
+echo
+echo "--- Kibana & Elasticsearch credentials ---"
 kubectl get secret elasticsearch-master-credentials --namespace monitoring -o jsonpath="{.data.username}" | base64 --decode | xargs printf 'Username: %s \n'
 kubectl get secret elasticsearch-master-credentials --namespace monitoring -o jsonpath="{.data.password}" | base64 --decode | xargs printf 'Password: %s \n'
