@@ -4,7 +4,7 @@ metadata:
   name: rabbitmq-producer
   labels:
     helm.sh/chart: rabbitmq-{{ .Values.version }}
-    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/name: producer
     app.kubernetes.io/instance: rabbitmq
     app.kubernetes.io/version: "{{ .Values.version }}"
     app.kubernetes.io/component: application
