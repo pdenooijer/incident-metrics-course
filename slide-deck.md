@@ -62,6 +62,7 @@ margin: 0 10px; /* Add some horizontal space between images */
 ![tester-nia.png](img/tester-nia.png)  
 
 ---
+
 # Observability from a PO's perspective
 <!-- 
 Why would you need observability in this role?
@@ -122,6 +123,7 @@ margin: 0 10px; /* Add some horizontal space between images */
 - Identify issues yourself
 - Monitor performance
 - Automated verification of non-functionals
+- Monitoring of pipelines
 --> 
 <style scoped>
 p {
@@ -143,13 +145,64 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 ---
 
+# Observability from a team-lead perspective
+<!-- Why would you need observability in this role? 
+- Monitor team performance
+- Identify problems
+- Keep an overview of systems
+- Verify architectural constraints
+--> 
+<style scoped>
+p {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 40%; /* Adjust height as needed */
+}
+p img {
+flex-grow: 1;
+max-width: 18%; 
+max-height: 100%;
+object-fit: contain;
+margin: 0 10px; /* Add some horizontal space between images */
+}
+</style>
+
+![po-anna.png](img/po-anna.png)
+![junior-mark.png](img/junior-mark.png)
+![medior-alex.png](img/medior-alex.png)
+![senior-arthur.png](img/senior-arthur.png)
+![tester-nia.png](img/tester-nia.png)
+
+
+![teamlead-architect.png](img/teamlead-architect.png)
+
+---
+
+# Aspects of observability
+
+- Logging
+  - 09:00 - 11:00 
+- Metrics
+  - 11:00 - 14:00 
+- Tracing & alerting
+  - 14:00 - 14:30
+- Reporting
+  - 14:30 - 15:00
+---
+
+# Logging
+
+> If it’s not logged, it didn’t happen.
+
+---
+
 # Logging - why logging matters
 
 - Essential for **monitoring**, **debugging**, and **auditing**
 - Helps identify issues before users notice them
+- Good logs shorten **MTTR** (Mean Time To Recovery).
 - Enables better **incident response** and **root cause analysis**
-
-> If it’s not logged, it didn’t happen.
 
 ---
 
@@ -160,7 +213,6 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 - Logs should explain **why** something happened — not just *what* happened.
 - Think in terms of **diagnostics**, **accountability**, and **operational insight**.
-- Good logs shorten **MTTR** (Mean Time To Recovery).
 
 🧠 *Design logs as you design APIs: intentional and structured.*
 
