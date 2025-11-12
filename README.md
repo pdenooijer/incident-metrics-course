@@ -31,6 +31,23 @@ Run this command to create the Kind Kubernetes cluster on the newly created Podm
 ./03-monitoring-stack.sh
 ```
 
+## Package, build and run the microservices with Maven & Podman
+
+The applications can be packaged, build and run in a single command using:
+
+```shell script
+./04-build-and-run-services.sh
+```
+
+## You can find the applications under: 
+http://localhost:30080/rabbitmq
+http://localhost:30080/hello
+
+http://localhost:30080/kibana
+http://localhost:30080/prometheus
+http://localhost:30080/grafana
+
+
 
 ## Running the applications in dev mode
 
@@ -42,10 +59,3 @@ mvn quarkus:dev
 
 > **_NOTE:_**  Quarkus ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
 
-## Package, build and run the microservices with Maven & Podman
-
-The applications can be packaged, build and run in a single command using:
-
-```shell script
-./04-build-and-run-services.sh
-```
