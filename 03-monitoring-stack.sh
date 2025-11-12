@@ -10,13 +10,21 @@ helm repo update elastic prometheus
 echo "--- Installing ---"
 
 echo "Elasticsearch..."
-helm upgrade --install elasticsearch elastic/elasticsearch --values "$monitoring_path/elasticsearch-values.yml" --namespace monitoring --create-namespace
+helm upgrade --install elasticsearch elastic/elasticsearch --namespace monitoring \
+  --values "$monitoring_path/elasticsearch-values.yml" --create-namespace
 
 echo "Filebeat..."
-helm upgrade --install filebeat elastic/filebeat --values "$monitoring_path/filebeat-values.yml" --namespace monitoring
+helm upgrade --install filebeat elastic/filebeat --namespace monitoring --values "$monitoring_path/filebeat-values.yml"
 
 echo "Logstash..."
-helm upgrade --install logstash elastic/logstash --values "$monitoring_path/logstash-values.yml" --namespace monitoring
+helm upgrade --install logstash elastic/logstash --namespace monitoring --values "$monitoring_path/logstash-values.yml"
+
+echo "Prometheus & Grafana..."
+helm upgrade --install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring \
+  --values "$monitoring_path/prometheus-values.yml"
+
+echo "APM..."
+helm upgrade --install apm-server elastic/apm-server --namespace monitoring --values "$monitoring_path/apm-values.yml"
 
 echo "Kibana..."
 kubectl delete secret kibana-kibana-es-token --namespace monitoring --ignore-not-found
@@ -26,13 +34,6 @@ kubectl delete role pre-install-kibana-kibana --namespace monitoring --ignore-no
 kubectl delete rolebinding pre-install-kibana-kibana --namespace monitoring --ignore-not-found
 kubectl delete job pre-install-kibana-kibana --namespace monitoring --ignore-not-found
 helm upgrade --install kibana elastic/kibana --values "$monitoring_path/kibana-values.yml" --namespace monitoring --force
-
-echo "Prometheus & Grafana..."
-helm upgrade --install prometheus prometheus-community/kube-prometheus-stack \
-  --values "$monitoring_path/prometheus-values.yml" --namespace monitoring
-
-echo "APM..."
-helm upgrade --install apm-server elastic/apm-server --namespace monitoring --values "$monitoring_path/apm-values.yml"
 
 echo
 echo "--- Prometheus & Grafana credentials ---"
