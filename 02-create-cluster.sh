@@ -23,8 +23,7 @@ kind create cluster --name "${name}" --config="$cluster_path/kind-cluster.yml"
 # localhost in the container is not localhost on the host. We want a consistent name that works from both ends,
 # so we tell containerd to alias localhost:5001 to the registry container when pulling images.
 registry_name='kind-registry'
-registry_port='5001'
-registry_dir="/etc/containerd/certs.d/localhost:${registry_port}"
+registry_dir="/etc/containerd/certs.d/localhost:5001"
 for node in $(kind get nodes --name "${name}"); do
   podman exec "${node}" mkdir -p "${registry_dir}"
   cat <<EOF | podman exec --interactive "${node}" cp /dev/stdin "${registry_dir}/hosts.toml"
