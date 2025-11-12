@@ -29,18 +29,16 @@ and inform the customer.
 
 ---
 
-# Schedule
-
-T.b.d. something like:
-- Introduction
-- Logging
-- Metrics theorie
-- Lunch
-- Metric exercises
+# Observability
+<!-- Check participants knowledge, also introduce the elements of the workshop (logging, metrics, etc).--> 
+What is observability?
+What elements can we identify?
+What do we use it for?
 
 ---
 
 # But first... meet the team!
+<!-- Setting the stage, creating a team-lead narrative to refer to during the rest of the workshop. -->
 <style scoped>
 p {
 display: flex;
@@ -62,6 +60,86 @@ margin: 0 10px; /* Add some horizontal space between images */
 ![medior-alex.png](img/medior-alex.png)
 ![senior-arthur.png](img/senior-arthur.png)
 ![tester-nia.png](img/tester-nia.png)  
+
+---
+# Observability from a PO's perspective
+<!-- 
+Why would you need observability in this role?
+Report to stakeholders, verify SLAs, 
+make substantiated decisions on technical improvements
+--> 
+<style scoped>
+p {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 80%; /* Adjust height as needed */
+}
+p img {
+flex-grow: 1;
+max-width: 30%; 
+max-height: 100%;
+object-fit: contain;
+margin: 0 10px; /* Add some horizontal space between images */
+}
+</style>
+
+![po-anna.png](img/po-anna.png)
+
+---
+
+# Observability from a developers perspective
+<!-- 
+Why would you need observability in this role? 
+- Verify solutions
+- Identify problems earlier 
+- Analyse problems more efficiently 
+--> 
+<style scoped>
+p {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 80%; /* Adjust height as needed */
+}
+p img {
+flex-grow: 1;
+max-width: 30%; 
+max-height: 100%;
+object-fit: contain;
+margin: 0 10px; /* Add some horizontal space between images */
+}
+</style>
+
+![junior-mark.png](img/junior-mark.png)
+![medior-alex.png](img/medior-alex.png)
+![senior-arthur.png](img/senior-arthur.png)
+
+---
+
+# Observability from a testers perspective
+<!-- Why would you need observability in this role? 
+- Identify issues yourself
+- Monitor performance
+- Automated verification of non-functionals
+--> 
+<style scoped>
+p {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 80%; /* Adjust height as needed */
+}
+p img {
+flex-grow: 1;
+max-width: 30%; 
+max-height: 100%;
+object-fit: contain;
+margin: 0 10px; /* Add some horizontal space between images */
+}
+</style>
+
+![tester-nia.png](img/tester-nia.png)
 
 ---
 
