@@ -457,7 +457,7 @@ Keep verbosity low in production — more logs ≠ more visibility.
 
 --- 
 
-# Metrics
+# Metrics TODO
 <!-- 10:45 - 12:00 -->
 
 - Wat meten we?
@@ -470,8 +470,100 @@ Keep verbosity low in production — more logs ≠ more visibility.
   - Azure Application Insights 
   - AWS X-Ray
 
+---
+
+# RED / USE / 4 Golden Signals
+
+Understand the key frameworks for measuring service health and performance.
+
+---
+
+## 🟥 RED Method
+
+**R**ate – how many requests per second your service handles
+**E**rrors – how many requests fail
+**D**uration – how long each request takes
+
+### 💡 Example
+- **Rate:** 500 checkouts per minute
+- **Errors:** 10 payment failures
+- **Duration:** 2 seconds per checkout
+
+If duration spikes or errors rise → performance problem.
+
+➡️ Best for **APIs** and **web services**.
+
+---
+
+## 🧮 USE Method
+
+**U**tilization – how busy a resource is (CPU, memory)
+**S**aturation – how full or overloaded it is
+**E**rrors – hardware or system-level issues
+
+### 💡 Example
+- **Utilization:** CPU at 85%
+- **Saturation:** Disk write queue growing
+- **Errors:** Disk read/write failures
+
+➡️ Best for **infrastructure monitoring** (servers, containers, networks).
+
+---
+
+## 🟢 Four Golden Signals
+
+1. **Latency** – time to handle a request
+2. **Traffic** – total demand on the system
+3. **Errors** – rate of failed requests
+4. **Saturation** – how close the system is to limits
+
+### 💡 Example
+Video streaming service:
+- **Latency:** Video start time
+- **Traffic:** Concurrent viewers
+- **Errors:** Failed video loads
+- **Saturation:** Bandwidth usage
+
+➡️ Works well for **user-facing systems**.
+
+---
+
+## 🧭 Summary
+
+| Framework | Focus | Best For |
+|------------|--------|-----------|
+| **RED** | Requests (Rate, Errors, Duration) | Application-level monitoring |
+| **USE** | Resources (Utilization, Saturation, Errors) | Infrastructure monitoring |
+| **4 Golden Signals** | User experience (Latency, Traffic, Errors, Saturation) | End-to-end service health |
+
+---
+
+## 📊 Combined View
+
+A **Grafana dashboard** could combine all three:
+- RED for app requests
+- USE for server metrics
+- Golden Signals for user experience
+
+👉 Together they give a complete picture of system health.
 
 --- 
+
+## 🧩 Exercise: Monitor the RabbitMQ Application
+
+### 🎯 Goal
+Implement the RED, USE, and 4 Golden Signals metrics in the RabbitMQ setup.
+
+### 🪶 Steps
+1. **Design a metrics solution**
+2. **Implement given solution**
+4. **Visualize:**
+   - Export metrics with **Prometheus**
+   - Create a **Grafana dashboard** showing all three frameworks
+
+💡 *Tip: Use RabbitMQ’s built-in Prometheus exporter for queue metrics!*
+
+---
 
 # Lunch
 <!-- 10:45 - 12:00 -->
@@ -490,6 +582,3 @@ Keep verbosity low in production — more logs ≠ more visibility.
 
 # Tracing
 <!-- 14:30 - 15:00 -->
-
-
-
