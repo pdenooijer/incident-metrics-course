@@ -99,8 +99,12 @@ ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=or
   -Delastic.apm.service_name=producer\
   -Delastic.apm.server_urls=http://apm-server-apm-server.monitoring:8200\
   -Delastic.apm.secret_token=\
-  -Delastic.apm.environment=production\
-  -Delastic.apm.application_packages=nl.ssg.incidentmetricscourse"
+  -Delastic.apm.environment=workshop\
+  -Delastic.apm.application_packages=nl.ssg.incidentmetricscourse\
+  -Ddisabled.elastic.apm.capture_body=all\
+  -Ddisabled.elastic.apm.enable_log_correlation=true\
+  -Ddisabled.elastic.apm.log_ecs_reformatting=OVERRIDE\
+  -Delastic.apm.log_sending=true"
 ENV JAVA_APP_JAR="/deployments/quarkus-run.jar"
 ENV JAVA_TOOL_OPTIONS="-javaagent:/deployments/lib/elastic-apm-agent.jar"
 

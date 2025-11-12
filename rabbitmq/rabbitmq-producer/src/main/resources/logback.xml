@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="ECS_JSON_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="co.elastic.logging.logback.EcsEncoder">
+            <serviceName>processor</serviceName>
+            <serviceVersion>processor-snapshot-001</serviceVersion>
+            <serviceEnvironment>workshop</serviceEnvironment>
+            <serviceNodeName>processor-node</serviceNodeName>
+        </encoder>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="ECS_JSON_CONSOLE"/>
+    </root>
+</configuration>

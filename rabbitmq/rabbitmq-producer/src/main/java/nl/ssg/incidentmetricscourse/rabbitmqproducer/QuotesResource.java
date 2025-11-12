@@ -7,14 +7,16 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import java.util.UUID;
+
+import lombok.extern.slf4j.Slf4j;
 import nl.ssg.incidentmetricscourse.rabbitmqmodel.Quote;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.jboss.logging.Logger;
 
+@Slf4j
 @Path("/quotes")
 public class QuotesResource {
-    private static final Logger LOG = Logger.getLogger(QuotesResource.class);
 
     @Channel("quote-requests") Emitter<String> quoteRequestEmitter;
 
@@ -39,7 +41,7 @@ public class QuotesResource {
         UUID uuid = UUID.randomUUID();
         quoteRequestEmitter.send(uuid.toString());
 
-        LOG.info("User 'workshop-user' requested a quote. Generated correlation id: " + uuid);
+        log.info("User 'workshop-user' requested a quote. Generated correlation id: " + uuid);
         return uuid.toString();
     }
 }
