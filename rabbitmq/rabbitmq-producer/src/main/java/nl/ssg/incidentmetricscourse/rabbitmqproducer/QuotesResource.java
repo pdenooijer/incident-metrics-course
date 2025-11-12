@@ -1,6 +1,8 @@
 package nl.ssg.incidentmetricscourse.rabbitmqproducer;
 
+import io.micrometer.core.instrument.MeterRegistry;
 import io.smallrye.mutiny.Multi;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -22,6 +24,9 @@ public class QuotesResource {
 
     @Channel("quotes") Multi<Quote> quotes;
 
+    @Inject
+    MeterRegistry registry;
+
     /**
      * Endpoint retrieving the "quotes" queue and sending the items to a server sent event.
      */
@@ -42,6 +47,7 @@ public class QuotesResource {
         quoteRequestEmitter.send(uuid.toString());
 
         log.info("User 'workshop-user' requested a quote. Generated correlation id: " + uuid);
+        registry.counter("quote-requested").increment();
         return uuid.toString();
     }
 }

@@ -1,10 +1,10 @@
 package nl.ssg.incidentmetricscourse.rabbitmqprocessor.listener;
 
+import io.micrometer.core.instrument.MeterRegistry;
 import io.smallrye.reactive.messaging.annotations.Blocking;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import java.util.Random;
-
 import lombok.extern.slf4j.Slf4j;
 import nl.ssg.incidentmetricscourse.rabbitmqmodel.Quote;
 import nl.ssg.incidentmetricscourse.rabbitmqprocessor.Flakyness;
@@ -12,7 +12,6 @@ import nl.ssg.incidentmetricscourse.rabbitmqprocessor.service.QuoteService;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
-import org.jboss.logging.Logger;
 
 /**
  * A bean consuming data from the "request" RabbitMQ queue and giving out a random quote.
@@ -22,21 +21,20 @@ import org.jboss.logging.Logger;
 @ApplicationScoped
 public class QuoteProcessor {
 
-    @Inject
     @ConfigProperty(name = "processor.duration.min")
     int minDuration;
 
-    @Inject
     @ConfigProperty(name = "processor.duration.max")
     int maxDuration;
 
-    @Inject
     @ConfigProperty(name = "processor.success-rate")
     float successRate;
 
     @Inject
-    QuoteService quoteService;
+    MeterRegistry registry;
 
+    @Inject
+    QuoteService quoteService;
 
     private final Random random = new Random();
 
@@ -47,9 +45,11 @@ public class QuoteProcessor {
         // simulate some hard working task
         int wait = Math.round(minDuration + random.nextFloat() * (maxDuration - minDuration));
         log.info("Processing request '" + quoteRequest + "', delay is " + wait + ", success-rate is " + successRate);
+        registry.counter("quote-requests").increment();
+
         Thread.sleep(wait);
 
-        Integer quote = null;
+        Integer quote;
         try {
             quote = Flakyness.<Integer>withRate(successRate)
                 .eitherGet(() -> quoteService.getQuote(quoteRequest))
