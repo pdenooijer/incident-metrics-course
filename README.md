@@ -8,6 +8,7 @@ If you want to learn more about Quarkus, please visit its website: <https://quar
 You must have the following installed on your machine:
 * podman-desktop - `brew install podman-desktop`
 * Kubernetes in Docker (kind) - `brew install kind`
+* Helm - `brew install helm`
 * Maven
 * Java 21 or newer
 
