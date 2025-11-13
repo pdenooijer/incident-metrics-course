@@ -9,6 +9,7 @@ You must have the following installed on your machine:
 * podman-desktop - `brew install podman-desktop podman`
 * Kubernetes in Docker (kind) - `brew install kind`
 * Helm - `brew install helm`
+* Kubectl - `brew install kubectl`
 * Maven
 * Java 21 or newer
 
