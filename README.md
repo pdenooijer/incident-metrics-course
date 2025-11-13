@@ -6,7 +6,7 @@ If you want to learn more about Quarkus, please visit its website: <https://quar
 
 ## Prerequisites
 You must have the following installed on your machine:
-* podman-desktop - `brew install podman-desktop`
+* podman-desktop - `brew install podman-desktop podman`
 * Kubernetes in Docker (kind) - `brew install kind`
 * Helm - `brew install helm`
 * Maven
@@ -59,4 +59,3 @@ mvn quarkus:dev
 ```
 
 > **_NOTE:_**  Quarkus ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
-
