@@ -8,21 +8,22 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import java.util.UUID;
-
 import lombok.extern.slf4j.Slf4j;
 import nl.ssg.incidentmetricscourse.rabbitmqmodel.Quote;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
-import org.jboss.logging.Logger;
+
+import java.util.UUID;
 
 @Slf4j
 @Path("/quotes")
 public class QuotesResource {
 
-    @Channel("quote-requests") Emitter<String> quoteRequestEmitter;
+    @Channel("quote-requests")
+    Emitter<String> quoteRequestEmitter;
 
-    @Channel("quotes") Multi<Quote> quotes;
+    @Channel("quotes")
+    Multi<Quote> quotes;
 
     @Inject
     MeterRegistry registry;
