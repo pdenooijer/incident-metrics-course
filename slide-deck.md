@@ -95,7 +95,7 @@ Why would you need observability in this role?
 - Verify solutions
 - Identify problems earlier 
 - Analyse problems more efficiently 
---> 
+-->
 <style scoped>
 p {
 display: flex;
@@ -258,7 +258,8 @@ MDC.clear();
 **Exercise 2: Review  the code in the repository**
 
 - What do you notice? 
-- Make changes where necessary
+- Make changes where necessary, 
+  - change only the logging, not the 'business logic'
 - Can you identify the bug from your logging?   
 
 ---
@@ -459,6 +460,9 @@ Keep verbosity low in production — more logs ≠ more visibility.
 
 # Metrics TODO
 <!-- 10:45 - 12:00 -->
+- Tools en frameworks
+  - OpenTelemetry
+  - 
 
 - Wat meten we?
   - Platform monitoring vs application monitoring
