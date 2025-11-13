@@ -7,26 +7,26 @@ helm repo add elastic https://helm.elastic.co
 helm repo add prometheus https://prometheus-community.github.io/helm-charts
 helm repo update elastic prometheus
 
-kubectl delete namespace monitoring --ignore-not-found
+#kubectl delete namespace monitoring --ignore-not-found
 
 echo "--- Installing ---"
 
 echo "Elasticsearch..."
-helm install elasticsearch elastic/elasticsearch --namespace monitoring \
+helm upgrade --install elasticsearch elastic/elasticsearch --namespace monitoring \
   --values "$monitoring_path/elasticsearch-values.yml" --create-namespace
 
 echo "Filebeat..."
-helm install filebeat elastic/filebeat --namespace monitoring --values "$monitoring_path/filebeat-values.yml"
+helm upgrade --install filebeat elastic/filebeat --namespace monitoring --values "$monitoring_path/filebeat-values.yml"
 
 echo "Logstash..."
-helm install logstash elastic/logstash --namespace monitoring --values "$monitoring_path/logstash-values.yml"
+helm upgrade --install logstash elastic/logstash --namespace monitoring --values "$monitoring_path/logstash-values.yml"
 
 echo "Prometheus & Grafana..."
-helm install prometheus prometheus/kube-prometheus-stack --namespace monitoring \
+helm upgrade --install prometheus prometheus/kube-prometheus-stack --namespace monitoring \
   --values "$monitoring_path/prometheus-values.yml"
 
 echo "APM..."
-helm install apm-server elastic/apm-server --namespace monitoring --values "$monitoring_path/apm-values.yml"
+helm upgrade --install apm-server elastic/apm-server --namespace monitoring --values "$monitoring_path/apm-values.yml"
 
 echo "Kibana..."
 helm install kibana elastic/kibana --namespace monitoring --values "$monitoring_path/kibana-values.yml"
