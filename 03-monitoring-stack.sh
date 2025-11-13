@@ -22,7 +22,7 @@ echo "Logstash..."
 helm install logstash elastic/logstash --namespace monitoring --values "$monitoring_path/logstash-values.yml"
 
 echo "Prometheus & Grafana..."
-helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring \
+helm install prometheus prometheus/kube-prometheus-stack --namespace monitoring \
   --values "$monitoring_path/prometheus-values.yml"
 
 echo "APM..."
