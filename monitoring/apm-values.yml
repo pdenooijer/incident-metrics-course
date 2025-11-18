@@ -7,8 +7,8 @@ apmConfig:
 
     output.elasticsearch:
       hosts: ["https://elasticsearch-master.monitoring:9200"]
-      username: "elastic"
-      password: "elastic"
+      username: '${ELASTICSEARCH_USERNAME}'
+      password: '${ELASTICSEARCH_PASSWORD}'
       ## If SSL is enabled
       protocol: https
       ssl.certificate_authorities:
@@ -30,9 +30,15 @@ extraInitContainers: ""
 # syntax here
 extraEnvs:
   - name: "ELASTICSEARCH_USERNAME"
-    value: "elastic"
+    valueFrom:
+      secretKeyRef:
+        name: elasticsearch-master-credentials
+        key: username
   - name: "ELASTICSEARCH_PASSWORD"
-    value: "elastic"
+    valueFrom:
+      secretKeyRef:
+        name: elasticsearch-master-credentials
+        key: password
 
 # Allows you to load environment variables from kubernetes secret or config map
 envFrom: []
