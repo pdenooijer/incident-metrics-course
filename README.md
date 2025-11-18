@@ -44,19 +44,25 @@ The applications can be packaged, build and run in a single command using:
 
 ## You can find the applications under: 
 
-http://localhost:30080/rabbitmq
-http://localhost:30080/hello
+- http://localhost:30080/rabbitmq
+- http://localhost:30080/hello
 
-http://localhost:30080/kibana
-http://localhost:30080/prometheus
-http://localhost:30080/grafana
+
+- http://localhost:30080/kibana  
+- http://localhost:30080/prometheus
+- http://localhost:30080/grafana
+
 
 ## Add APM integration
 
-1. Got to Kibana
-2. Add Elastic APM integration (needs multiple clicks to get to configure screen)
-3. Under General change Host and URL from `localhost` to `apm-server-apm-server`, leave protocol and port as is.
+1. Go to Kibana
+2. Add Elastic APM integration: http://localhost:30080/kibana/app/integrations/detail/apm/overview
+3. Under `General` > `Server configuration` change 
+   1. `Host` from `localhost:8200` to `apm-server-apm-server:8200`
+   2. `URL` from `https://localhost:8200` to `http://apm-server-apm-server:8200`
 4. Save
+5. In the next popup select `Add Elastic Agent later`
+
 
 ## Running the applications in dev mode
 
