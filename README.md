@@ -22,6 +22,7 @@ image registry for this course. Run the following script:
 ```shell script
 ./01-create-machine.sh
 ```
+
 Run this command to create the Kind Kubernetes cluster on the newly created Podman machine.
 
 ```shell script
@@ -29,6 +30,8 @@ Run this command to create the Kind Kubernetes cluster on the newly created Podm
 ```
 
 ## Add monitoring stack
+
+Run this command to set up the monitoring stack.
 
 ```shell script
 ./03-monitoring-stack.sh
