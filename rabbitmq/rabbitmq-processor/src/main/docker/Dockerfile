@@ -12,8 +12,7 @@ COPY target/quarkus-app/quarkus/ /opt/quarkus/
 
 EXPOSE 8080
 USER 185
-ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager \
-  -Delastic.apm.rabbitmq_naming_mode=QUEUE \
+ENV JAVA_OPTS_APPEND="-Delastic.apm.rabbitmq_naming_mode=QUEUE \
   -Delastic.apm.verify_server_cert=false\
   -Delastic.apm.log_level=TRACE\
   -Delastic.apm.service_name=processor\
@@ -25,7 +24,6 @@ ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=or
   -Ddisabled.elastic.apm.enable_log_correlation=true\
   -Ddisabled.elastic.apm.log_ecs_reformatting=OVERRIDE\
   -Delastic.apm.log_sending=true"
-ENV JAVA_APP_JAR="/opt/quarkus-run.jar"
 ENV JAVA_TOOL_OPTIONS="-javaagent:/opt/lib/elastic-apm-agent.jar"
 
-CMD ["java", "-jar", "/opt/quarkus-run.jar"]
+CMD [ "/bin/sh", "-c", "java ${JAVA_OPTS_APPEND} -jar /opt/quarkus-run.jar" ]

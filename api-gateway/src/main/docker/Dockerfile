@@ -11,7 +11,5 @@ COPY target/quarkus-app/quarkus/ /opt/quarkus/
 
 EXPOSE 8080
 USER 185
-ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
-ENV JAVA_APP_JAR="/opt/quarkus-run.jar"
 
 CMD [ "java", "-jar", "/opt/quarkus-run.jar" ]
