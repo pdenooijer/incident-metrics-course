@@ -7,6 +7,13 @@ helm repo add elastic https://helm.elastic.co
 helm repo add prometheus https://prometheus-community.github.io/helm-charts
 helm repo update elastic prometheus
 
+echo "--- Clean up ---"
+helm uninstall kibana --ignore-not-found
+helm uninstall apm-server --ignore-not-found
+helm uninstall prometheus --ignore-not-found
+helm uninstall logstash --ignore-not-found
+helm uninstall filebeat --ignore-not-found
+helm uninstall elasticsearch --ignore-not-found
 kubectl delete namespace monitoring --ignore-not-found
 
 echo "--- Installing ---"
