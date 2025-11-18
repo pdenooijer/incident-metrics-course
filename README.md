@@ -5,6 +5,7 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
 
 ## Prerequisites
+
 You must have the following installed on your machine:
 * podman-desktop - `brew install podman-desktop podman`
 * Kubernetes in Docker (kind) - `brew install kind`
@@ -42,6 +43,7 @@ The applications can be packaged, build and run in a single command using:
 ```
 
 ## You can find the applications under: 
+
 http://localhost:30080/rabbitmq
 http://localhost:30080/hello
 
@@ -49,7 +51,12 @@ http://localhost:30080/kibana
 http://localhost:30080/prometheus
 http://localhost:30080/grafana
 
+## Add APM integration
 
+1. Got to Kibana
+2. Add Elastic APM integration (needs multiple clicks to get to configure screen)
+3. Under General change Host and URL from `localhost` to `apm-server-apm-server`, leave protocol and port as is.
+4. Save
 
 ## Running the applications in dev mode
 
