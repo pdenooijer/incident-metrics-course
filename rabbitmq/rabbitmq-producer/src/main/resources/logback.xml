@@ -2,10 +2,10 @@
 <configuration>
     <appender name="ECS_JSON_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="co.elastic.logging.logback.EcsEncoder">
-            <serviceName>processor</serviceName>
-            <serviceVersion>processor-snapshot-001</serviceVersion>
+            <serviceName>producer</serviceName>
+            <serviceVersion>producer-snapshot-001</serviceVersion>
             <serviceEnvironment>workshop</serviceEnvironment>
-            <serviceNodeName>processor-node</serviceNodeName>
+            <serviceNodeName>producer-node</serviceNodeName>
         </encoder>
     </appender>
 
