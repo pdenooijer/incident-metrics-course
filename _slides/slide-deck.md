@@ -124,7 +124,8 @@ margin: 0 10px; /* Add some horizontal space between images */
 - Monitor performance
 - Automated verification of non-functionals
 - Monitoring of pipelines
--->
+- Identify risk/focus-area's
+--> 
 <style scoped>
 p {
 display: flex;
@@ -747,4 +748,157 @@ margin: 0 10px; /* Add some horizontal space between images */
 # Alerting
 <!-- 13:00 - 14:30 -->
 
+
+
 ---
+# Incident Management Metrics
+
+
+---
+# Incident Management Metrics
+## MTTD — Mean Time To Detect
+
+**Definition** 
+&emsp; Average time between the moment an incident occurs and the moment it is detected.
+
+**Why it matters** 
+&emsp; The faster you detect an incident, the smaller the impact.
+
+**Source** 
+&emsp; Monitoring, logging, and alerting systems (e.g., Prometheus, APM).
+
+**Target**
+&emsp; < 15 minutes for major incidents (depending on SLA).
+
+
+---
+# Incident Management Metrics
+## MTTA — Mean Time To Acknowledge
+
+
+**Definition** 
+&emsp; Average time between the reporting of an incident and the first response from an engineer.
+
+**Why it matters** 
+&emsp; Shows how responsive the support or on-call team is.
+
+**Source** 
+&emsp; Ticket system, e.g. Jira, 
+
+**Target**
+&emsp; < 15 minutes
+
+
+---
+# Incident Management Metrics
+## MTTR — Mean Time To Resolve
+
+
+**Definition** 
+&emsp; Average time from detection to full resolution of an incident.
+
+**Why it matters** 
+&emsp; Measures the efficiency of recovery processes and team collaboration.
+
+**Source** 
+&emsp; Ticket system, e.g. Jira,
+
+**Target** 
+&emsp; < 1 hour for major incidents, < 2 hour for minor incidents
+
+
+---
+# Incident Management Metrics
+## Number of Major Incidents
+
+
+**Definition** 
+&emsp; Number of high-impact incidents (e.g., service completely unavailable).
+
+**Why it matters** 
+&emsp; Provides insight into the stability of business-critical systems.
+
+**Source** 
+&emsp; Ticket systemen (e.g. ServiceNow, Jira)
+
+**Target** 
+&emsp; Decrease per quarter.
+
+
+---
+# Incident Management Metrics
+## Incident Recurrence Rate
+
+
+**Definition** 
+&emsp; Percentage of incidents that reoccur within a given period.
+
+**Why it matters** 
+&emsp; Indicator of structural problem-solving effectiveness (or lack thereof).
+
+**Source** 
+&emsp; Post-mortem, SLA reporting
+
+**Target** 
+&emsp; < 5% recurring incidents.
+
+
+---
+# Incident Management Metrics
+## RCA Completion Rate (Root Cause Analysis)
+
+
+**Definition** 
+&emsp; Percentage of incidents for which a root cause is identified and documented within X days.
+
+**Why it matters** 
+&emsp; Measures discipline in problem management and learning from incidents.
+
+**Target** 
+&emsp; 100% for major incidents within 5 working days.
+
+
+---
+# Incident Management Metrics
+## SLA Compliance Rate
+
+
+**Definition** 
+&emsp; Percentage of incidents resolved within the agreed SLA timeframe.
+
+**Why it matters** 
+&emsp; Shows adherence to commitments made to customers or the business.
+
+**Target** 
+&emsp; ≥ 95%.
+
+
+---
+# Incident Management Metrics
+## Post-Incident Customer Satisfaction (CSAT)
+
+
+**Definition** 
+&emsp; Average satisfaction score from users after incident resolution.
+
+**Why it matters** 
+&emsp; Measures not only speed but also communication quality and customer focus.
+
+**Source** 
+&emsp; Short survey after the incident.
+
+
+---
+# Incident Management Metrics
+## How They Relate
+
+A mental model:
+
+MTTD + MTTA + MTTR 
+&emsp; measure speed and efficiency of your incident process.
+
+Major Incidents + Recurrence + RCA Completion
+&emsp; measure quality and structural improvement capability.
+
+SLA Compliance + CSAT
+&emsp; measure impact and perception from the customer/business perspective.
