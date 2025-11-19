@@ -234,6 +234,33 @@ MDC.clear();
 ```
 ---
 
+# Tooling
+
+<style scoped>
+p {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 80%; /* Adjust height as needed */
+}
+p img {
+flex-grow: 1;
+max-width: 18%; 
+max-height: 100%;
+object-fit: contain;
+margin: 0 10px; /* Add some horizontal space between images */
+}
+</style>
+
+![aws-cloudwatch](img/logging/aws-cloudwatch.webp)
+![elasticsearch](img/logging/elasticsearch.png)
+![azure-monitor](img/logging/azure-monitor.png)
+![logo-loki](img/logging/loki.svg)
+![splunk](img/logging/splunk.svg)
+
+
+---
+
 # Let's dive in!
 
 - Install podman desktop
