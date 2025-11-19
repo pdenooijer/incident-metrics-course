@@ -906,7 +906,25 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 ---
 # Incident Management Metrics
+<!--
+-->
+<style scoped>
+p {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 80%; /* Adjust height as needed */
+}
+p img {
+flex-grow: 1;
+max-width: 30%;
+max-height: 100%;
+object-fit: contain;
+margin: 0 10px; /* Add some horizontal space between images */
+}
+</style>
 
+![po-anna.png](img/team/po-anna.png)
 
 ---
 # Incident Management Metrics
@@ -947,7 +965,6 @@ margin: 0 10px; /* Add some horizontal space between images */
 # Incident Management Metrics
 ## MTTR — Mean Time To Resolve
 
-
 **Definition** 
 &emsp; Average time from detection to full resolution of an incident.
 
@@ -961,24 +978,28 @@ margin: 0 10px; /* Add some horizontal space between images */
 &emsp; < 1 hour for major incidents, < 2 hour for minor incidents
 
 
+> Reliability is a function of mean time to failure (MTTF) and mean time to repair (MTTR)
+
 ---
 # Incident Management Metrics
-## Number of Major Incidents
+## MTTF — Mean Time To Failure
+
+**Definition**
+&emsp; Average time a system or component operates before experiencing a failure.
+
+**Why it matters**
+&emsp; Indicates the inherent reliability and stability of systems over time.
+&emsp; Higher MTTF = fewer failures and greater operational resilience.
+
+**Source**
+&emsp; Monitoring and logging platforms (e.g. CloudWatch, Azure Monitor, Prometheus).
+&emsp; Hardware/system lifecycle data.
+
+**Target**
+&emsp; Increase over time through reliability engineering and preventive maintenance.
 
 
-**Definition** 
-&emsp; Number of high-impact incidents (e.g., service completely unavailable).
-
-**Why it matters** 
-&emsp; Provides insight into the stability of business-critical systems.
-
-**Source** 
-&emsp; Ticket systemen (e.g. ServiceNow, Jira)
-
-**Target** 
-&emsp; Decrease per quarter.
-
-
+> Reliability is a function of mean time to failure (MTTF) and mean time to repair (MTTR)
 ---
 # Incident Management Metrics
 ## Incident Recurrence Rate
@@ -1000,7 +1021,6 @@ margin: 0 10px; /* Add some horizontal space between images */
 ---
 # Incident Management Metrics
 ## RCA Completion Rate (Root Cause Analysis)
-
 
 **Definition** 
 &emsp; Percentage of incidents for which a root cause is identified and documented within X days.
@@ -1051,7 +1071,7 @@ A mental model:
 MTTD + MTTA + MTTR 
 &emsp; measure speed and efficiency of your incident process.
 
-Major Incidents + Recurrence + RCA Completion
+MTTF + Recurrence + RCA Completion
 &emsp; measure quality and structural improvement capability.
 
 SLA Compliance + CSAT
