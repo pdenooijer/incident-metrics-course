@@ -717,6 +717,167 @@ Implement the RED, USE, and 4 Golden Signals metrics in the RabbitMQ setup.
 
 ---
 
+# 🚨 Alerting
+<!-- 13:00 - 14:30 -->
+
+*"Alerts should notify humans **only** when action is required."*
+
+---
+
+## 🎯 Why Alerting Exists
+
+- Detect issues **before users experience impact**
+- Avoid noise and alert fatigue
+- Prioritize actionable signals
+
+> 📌 A dashboard is for **observing**.
+> 📌 An alert is for **acting**.
+
+---
+
+## ❌ Common Bad Examples
+
+- CPU > 90%
+- Disk space < 20%
+- Requests > threshold
+- "Something turned red"
+
+➡️ You don’t want to wake someone because infrastructure is busy — only if **users are affected**.
+
+---
+
+## 🧭 Types of Alerts
+
+| Type                       | Purpose                   | Example              |
+|----------------------------|---------------------------|----------------------|
+| 📟 **Paging Alert**        | Immediate action required | Error rate > SLO     |
+| 📝 **Ticket Alert**        | Action needed, but later  | Certificate expiring |
+| ℹ️ **Informational Alert** | Context only, no action   | Deployment event     |
+
+➡ **Paging alerts should be rare and meaningful.**
+
+---
+
+## 📏 SLO-Based Alerting
+
+Alert based on **user-impact**, not arbitrary numeric thresholds.
+
+- **SLI** → measurable indicator
+- **SLO** → target reliability level
+- **Alert** → when you are about to violate the SLO
+
+🔧 Alert only when deviations **affect users or reliability objectives.**
+
+---
+
+## 🧪 Bad vs Good Alerting Example
+
+❌ Bad alert:
+
+ALERT: CPU > 90%
+
+✅ Good alert:
+
+⚠️ Checkout API latency 1.2s (SLO: 300ms)
+Impact: 18% of customer checkouts failing
+Likely cause: queue saturation
+Runbook: https://runbook/checkout-latency
+
+---
+
+## 🧠 Alert Design Rules
+
+| Rule         | Meaning                           |
+|--------------|-----------------------------------|
+| Actionable   | A human needs to do something     |
+| Urgent       | It cannot wait                    |
+| Owned        | A responsible team exists         |
+| Context rich | Includes cause, hint, and runbook |
+
+---
+
+## 📦 Runbooks
+
+Every alert must have:
+
+- What the alert means
+- Immediate troubleshooting steps
+- Escalation path
+
+🔗 A runbook makes an alert **fixable**, not just noisy.
+
+---
+
+## 📊 Alerting Maturity Model
+
+| Level      | Description                            |
+|------------|----------------------------------------|
+| 🔴 Level 1 | Everything alerts — chaos mode         |
+| 🟠 Level 2 | Resource-threshold monitoring          |
+| 🟡 Level 3 | SLO-driven alerting                    |
+| 🟢 Level 4 | Predictive alerting + auto-remediation |
+
+---
+
+## 🧹 Alert Hygiene
+
+Alerting requires continuous improvement:
+
+- Quarterly alert review
+- Remove unused alerts
+- Track alert metrics:
+    - False positives
+    - Time to acknowledge
+    - Action rate
+
+🎯 **Goal:** Improve signal-to-noise ratio.
+
+---
+
+## 🚦 Alert Review Checklist
+
+For each alert:
+
+✔ Does it represent user impact?
+✔ Is human action required?
+✔ Is there a clear ownership team?
+✔ Is the message self-contained and clear?
+✔ Is there a runbook?
+✔ Can it be tested?
+
+---
+
+## 🧩 Alerting Exercise
+
+📥 Activity in pairs:
+
+1. Make a list of (fictional) alerts
+   - From the metrics created in the previous exercise
+   - Your current or previous assignment
+2. Categorize them as:
+    - Paging
+    - Ticket
+    - Informational
+3. Try to have at least 2 alerts for each category
+4. Discuss, improve or remove at least **two** alerts
+
+➡ Goal: **Fewer alerts, better alerts.**
+
+---
+
+## ⭐ Key Takeaways
+
+**Good alerting is:**
+
+- Calm — few paging alerts
+- Relevant — focused on user impact
+- Maintained — reviewed and documented
+- Measurable — tied to SLOs and incident metrics
+
+> 👌 "**Only alert when humans must act.**"
+
+---
+
 # Tracing
 
 <!-- 14:30 - 15:00 -->
@@ -742,13 +903,6 @@ margin: 0 10px; /* Add some horizontal space between images */
 ![aws-x-ray.png](img/tracing/aws-x-ray.png)
 ![azure-monitor.png](img/tracing/azure-monitor.png)
 ![azure-application-insights.png](img/tracing/azure-application-insights.png)
-
----
-
-# Alerting
-<!-- 13:00 - 14:30 -->
-
-
 
 ---
 # Incident Management Metrics
