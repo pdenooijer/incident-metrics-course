@@ -30,7 +30,7 @@ and inform the customer.
 ---
 
 # Observability
-<!-- Check participants knowledge, also introduce the elements of the workshop (logging, metrics, etc).--> 
+<!-- Check participants' knowledge, also introduce the elements of the workshop (logging, metrics, etc).-->
 What is observability?
 What elements can we identify?
 What do we use it for?
@@ -176,6 +176,64 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 
 ![teamlead-architect.png](img/team/teamlead-architect.png)
+
+---
+
+# 📊 SLA, SLO & SLI Recap
+
+Understanding reliability targets and measurement.
+
+---
+
+## 🔍 What Are They?
+
+- **SLI** → What we **measure** (data)
+- **SLO** → What we **aim for** (target)
+- **SLA** → What we **promise externally** (with consequences)
+
+---
+
+## 📐 Definitions
+
+| Concept | Stands for              | Meaning                                      | Audience          |
+|---------|-------------------------|----------------------------------------------|-------------------|
+| **SLI** | Service Level Indicator | A metric that represents system performance  | DevOps            |
+| **SLO** | Service Level Objective | Target reliability threshold for SLIs        | DevOps            |
+| **SLA** | Service Level Agreement | Contractual uptime commitment with penalties | Customers & Legal |
+
+---
+
+## 📈 Example SLI
+
+**Service:** Order API
+**SLI:** Successful request rate per minute
+**Measured:** `99.2%`
+
+| Layer | Example                         |
+|-------|---------------------------------|
+| SLI   | % of successful requests        |
+| SLO   | 99.9% success rate over a month |
+| SLA   | 99.5% monthly uptime            |
+
+---
+
+## 📉 Burn Rate & Error Budget
+<!-- Alerting will be further discussed later in the course -->
+
+- If SLO is **99.9%**, then failure allowance = `0.1% errors`
+- That **0.1%** is the **error budget**
+
+> If the budget is spent too fast → alert action required.
+
+---
+
+## ⭐ Summary
+
+| Item    | Purpose             | Used for             |
+|---------|---------------------|----------------------|
+| **SLI** | Measure reliability | Observability        |
+| **SLO** | Target reliability  | Alerting & decisions |
+| **SLA** | Contract guarantee  | Business alignment   |
 
 ---
 
