@@ -11,7 +11,7 @@ section {
 }
 </style>
 
-# **Application monitoring <br/> for team leads**
+# **Observability <br/> for team leads**
 
 How to use logging and metrics to guide a team 
 and inform the customer. 
@@ -63,32 +63,6 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 ---
 
-# Observability from a PO's perspective
-<!-- 
-Why would you need observability in this role?
-Report to stakeholders, verify SLAs, 
-make substantiated decisions on technical improvements
---> 
-<style scoped>
-p {
-display: flex;
-justify-content: space-around;
-align-items: center;
-height: 80%; /* Adjust height as needed */
-}
-p img {
-flex-grow: 1;
-max-width: 30%; 
-max-height: 100%;
-object-fit: contain;
-margin: 0 10px; /* Add some horizontal space between images */
-}
-</style>
-
-![po-anna.png](img/team/po-anna.png)
-
----
-
 # Observability from a developers perspective
 <!-- 
 Why would you need observability in this role? 
@@ -115,6 +89,32 @@ margin: 0 10px; /* Add some horizontal space between images */
 ![junior-mark.png](img/team/junior-mark.png)
 ![medior-alex.png](img/team/medior-alex.png)
 ![senior-arthur.png](img/team/senior-arthur.png)
+
+---
+
+# Observability from a PO's perspective
+<!-- 
+Why would you need observability in this role?
+Report to stakeholders, verify SLAs, 
+make substantiated decisions on technical improvements
+--> 
+<style scoped>
+p {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 80%; /* Adjust height as needed */
+}
+p img {
+flex-grow: 1;
+max-width: 30%; 
+max-height: 100%;
+object-fit: contain;
+margin: 0 10px; /* Add some horizontal space between images */
+}
+</style>
+
+![po-anna.png](img/team/po-anna.png)
 
 ---
 
