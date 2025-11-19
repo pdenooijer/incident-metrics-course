@@ -55,11 +55,11 @@ margin: 0 10px; /* Add some horizontal space between images */
 }
 </style>
 
-![po-anna.png](img/po-anna.png)
-![junior-mark.png](img/junior-mark.png)
-![medior-alex.png](img/medior-alex.png)
-![senior-arthur.png](img/senior-arthur.png)
-![tester-nia.png](img/tester-nia.png)  
+![po-anna.png](img/team/po-anna.png)
+![junior-mark.png](img/team/junior-mark.png)
+![medior-alex.png](img/team/medior-alex.png)
+![senior-arthur.png](img/team/senior-arthur.png)
+![tester-nia.png](img/team/tester-nia.png)  
 
 ---
 
@@ -85,7 +85,7 @@ margin: 0 10px; /* Add some horizontal space between images */
 }
 </style>
 
-![po-anna.png](img/po-anna.png)
+![po-anna.png](img/team/po-anna.png)
 
 ---
 
@@ -112,9 +112,9 @@ margin: 0 10px; /* Add some horizontal space between images */
 }
 </style>
 
-![junior-mark.png](img/junior-mark.png)
-![medior-alex.png](img/medior-alex.png)
-![senior-arthur.png](img/senior-arthur.png)
+![junior-mark.png](img/team/junior-mark.png)
+![medior-alex.png](img/team/medior-alex.png)
+![senior-arthur.png](img/team/senior-arthur.png)
 
 ---
 
@@ -141,7 +141,7 @@ margin: 0 10px; /* Add some horizontal space between images */
 }
 </style>
 
-![tester-nia.png](img/tester-nia.png)
+![tester-nia.png](img/team/tester-nia.png)
 
 ---
 
@@ -168,14 +168,14 @@ margin: 0 10px; /* Add some horizontal space between images */
 }
 </style>
 
-![po-anna.png](img/po-anna.png)
-![junior-mark.png](img/junior-mark.png)
-![medior-alex.png](img/medior-alex.png)
-![senior-arthur.png](img/senior-arthur.png)
-![tester-nia.png](img/tester-nia.png)
+![po-anna.png](img/team/po-anna.png)
+![junior-mark.png](img/team/junior-mark.png)
+![medior-alex.png](img/team/medior-alex.png)
+![senior-arthur.png](img/team/senior-arthur.png)
+![tester-nia.png](img/team/tester-nia.png)
 
 
-![teamlead-architect.png](img/teamlead-architect.png)
+![teamlead-architect.png](img/team/teamlead-architect.png)
 
 ---
 
@@ -502,6 +502,54 @@ Keep verbosity low in production — more logs ≠ more visibility.
   - AWS X-Ray
 
 ---
+# Metrics - storage
+<style scoped>
+p {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 80%; /* Adjust height as needed */
+}
+p img {
+flex-grow: 1;
+max-width: 18%; 
+max-height: 100%;
+object-fit: contain;
+margin: 0 10px; /* Add some horizontal space between images */
+}
+</style>
+
+![amazon-timestream.png](img/metrics/tsdb/amazon-timestream.png)
+![influxdb.svg](img/metrics/tsdb/influxdb.svg)
+![mimir.png](img/metrics/tsdb/mimir.png)
+![prometheus.png](img/metrics/tsdb/prometheus.png)
+![victoria-metrics.png](img/metrics/tsdb/victoria-metrics.png)
+
+---
+
+# Metrics - visualisation
+<style scoped>
+p {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 80%; /* Adjust height as needed */
+}
+p img {
+flex-grow: 1;
+max-width: 18%; 
+max-height: 100%;
+object-fit: contain;
+margin: 0 10px; /* Add some horizontal space between images */
+}
+</style>
+
+![aws-cloudwatch.webp](img/metrics/visualisation/aws-cloudwatch.webp)
+![azure-monitor.png](img/metrics/visualisation/azure-monitor.png)
+![grafana.png](img/metrics/visualisation/grafana.png)
+![kibana.png](img/metrics/visualisation/kibana.png)
+
+---
 
 # RED / USE / 4 Golden Signals
 
@@ -599,17 +647,44 @@ Implement the RED, USE, and 4 Golden Signals metrics in the RabbitMQ setup.
 # Lunch
 <!-- 10:45 - 12:00 -->
 
+![lunch.png](img/lunch.png)
 
 
+--- 
+
+# Tracing
+
+<!-- 14:30 - 15:00 -->
+<style scoped>
+p {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 80%; /* Adjust height as needed */
+}
+p img {
+flex-grow: 1;
+max-width: 12%; 
+max-height: 100%;
+object-fit: contain;
+margin: 0 10px; /* Add some horizontal space between images */
+}
+</style>
+
+![grafana-tempo.png](img/tracing/grafana-tempo.png)
+![jaeger.png](img/tracing/jaeger.png)
+![zipkin.svg](img/tracing/zipkin.svg)
+![aws-x-ray.png](img/tracing/aws-x-ray.png)
+![azure-monitor.png](img/tracing/azure-monitor.png)
+![azure-application-insights.png](img/tracing/azure-application-insights.png)
 
 --- 
 
 # Alerting
 <!-- 13:00 - 14:30 -->
 
+---
 
 
---- 
 
-# Tracing
-<!-- 14:30 - 15:00 -->
+
