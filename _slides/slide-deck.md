@@ -851,8 +851,8 @@ For each alert:
 
 📥 Activity in pairs:
 
-1. Make a list of (fictional) alerts
-   - From the metrics created in the previous exercise
+1. Make a list of (fictional) alerts from
+   - The metrics created in the previous exercise or
    - Your current or previous assignment
 2. Categorize them as:
     - Paging
