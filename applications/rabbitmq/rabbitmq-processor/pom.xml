@@ -7,7 +7,7 @@
         <groupId>nl.ssg.incidentmetricscourse</groupId>
         <artifactId>course</artifactId>
         <version>${revision}${changelist}</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
 
     <artifactId>rabbitmq-processor</artifactId>

@@ -24,11 +24,11 @@
     </properties>
 
     <modules>
-        <module>api-gateway</module>
-        <module>hello-world</module>
-        <module>rabbitmq/rabbitmq-model</module>
-        <module>rabbitmq/rabbitmq-processor</module>
-        <module>rabbitmq/rabbitmq-producer</module>
+        <module>applications/api-gateway</module>
+        <module>applications/hello-world</module>
+        <module>applications/rabbitmq/rabbitmq-model</module>
+        <module>applications/rabbitmq/rabbitmq-processor</module>
+        <module>applications/rabbitmq/rabbitmq-producer</module>
     </modules>
 
     <dependencyManagement>

@@ -5,10 +5,10 @@
         <groupId>nl.ssg.incidentmetricscourse</groupId>
         <artifactId>course</artifactId>
         <version>${revision}${changelist}</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>hello-world</artifactId>
+    <artifactId>api-gateway</artifactId>
     <version>${revision}${changelist}</version>
 
     <dependencies>
@@ -18,11 +18,11 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-micrometer-registry-prometheus</artifactId>
+            <artifactId>quarkus-rest-client-jackson</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-junit5</artifactId>
+            <artifactId>quarkus-junit5-mockito</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
