@@ -263,7 +263,6 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 # Let's dive in!
 
-- Install podman desktop
 - Clone repo: github.com:pdenooijer/incident-metrics-course.git
 - Follow the instructions in the README
  
@@ -299,6 +298,11 @@ margin: 0 10px; /* Add some horizontal space between images */
 - Define what makes 'proper' logging 
 - Make rules comprehensible for juniors to seniors
 - Discuss in pairs 
+
+---
+<!-- 10:10 - 10:25 -->
+
+# ☕ Break
 
 ---
 
@@ -459,14 +463,14 @@ table {
 }
 </style>
 
-| Level   | Purpose | Example                                   |
-|---------|----------|-------------------------------------------|
-| `TRACE` | Very detailed, internal state | Method-level entry/exit                   |
-| `DEBUG` | Developer-focused info | Query parameters, object states           |
-| `INFO`  | Application events | Startup, shutdown, key transactions       |
-| `WARN`  | Potential issues | Fallbacks, retries                        |
-| `ERROR` | Failures | Exceptions, failed transactions           |
-| `FATAL` | Failures | Non-recoverable error that cause downtime |
+| Level   | Purpose                       | Example                                    |
+|---------|-------------------------------|--------------------------------------------|
+| `TRACE` | Very detailed, internal state | Method-level entry/exit                    |
+| `DEBUG` | Developer-focused info        | Query parameters, object states            |
+| `INFO`  | Application events            | Startup, shutdown, key transactions/events |
+| `WARN`  | Potential issues              | Fallbacks, retries                         |
+| `ERROR` | Failures                      | Exceptions, failed transactions            |
+| `FATAL` | Failures                      | Non-recoverable error that cause downtime  |
 
 Experienced developers know: log level inflation kills signal-to-noise ratio.
 Keep verbosity low in production — more logs ≠ more visibility.
@@ -479,7 +483,7 @@ Keep verbosity low in production — more logs ≠ more visibility.
 
 * Context, not volume
 * Correct severity levels
-* No sensitive data
+* No sensitive data, use (generated) identifier instead
 * Consistent structure
 * Traceability across systems
 
@@ -551,9 +555,13 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 ---
 
-# RED / USE / 4 Golden Signals
+# Metrics - frameworks
 
 Understand the key frameworks for measuring service health and performance.
+
+- RED
+- USE
+- 4 Golden Signals
 
 ---
 
@@ -609,11 +617,11 @@ Video streaming service:
 
 ## 🧭 Summary
 
-| Framework | Focus | Best For |
-|------------|--------|-----------|
-| **RED** | Requests (Rate, Errors, Duration) | Application-level monitoring |
-| **USE** | Resources (Utilization, Saturation, Errors) | Infrastructure monitoring |
-| **4 Golden Signals** | User experience (Latency, Traffic, Errors, Saturation) | End-to-end service health |
+| Framework            | Focus                                                  | Best For                     |
+|----------------------|--------------------------------------------------------|------------------------------|
+| **RED**              | Requests (Rate, Errors, Duration)                      | Application-level monitoring |
+| **USE**              | Resources (Utilization, Saturation, Errors)            | Infrastructure monitoring    |
+| **4 Golden Signals** | User experience (Latency, Traffic, Errors, Saturation) | End-to-end service health    |
 
 ---
 
@@ -636,7 +644,7 @@ Implement the RED, USE, and 4 Golden Signals metrics in the RabbitMQ setup.
 ### 🪶 Steps
 1. **Design a metrics solution**
 2. **Implement given solution**
-4. **Visualize:**
+3. **Visualize:**
    - Export metrics with **Prometheus**
    - Create a **Grafana dashboard** showing all three frameworks
 
@@ -645,7 +653,7 @@ Implement the RED, USE, and 4 Golden Signals metrics in the RabbitMQ setup.
 ---
 
 # Lunch
-<!-- 10:45 - 12:00 -->
+<!-- 12:00 - 13:00 -->
 
 ![lunch.png](img/lunch.png)
 
@@ -684,7 +692,3 @@ margin: 0 10px; /* Add some horizontal space between images */
 <!-- 13:00 - 14:30 -->
 
 ---
-
-
-
-
