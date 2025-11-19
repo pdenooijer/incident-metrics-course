@@ -240,13 +240,12 @@ Understanding reliability targets and measurement.
 # Aspects of observability
 
 - Logging
-  - 09:00 - 11:00 
 - Metrics
-  - 11:00 - 14:00 
-- Tracing & alerting
-  - 14:00 - 14:30
+- Lunch
+- Alerting
+- Tracing
 - Reporting
-  - 14:30 - 15:00
+
 ---
 
 # Logging
@@ -564,6 +563,7 @@ Keep verbosity low in production — more logs ≠ more visibility.
   - AWS X-Ray
 
 ---
+
 # Metrics - storage
 <style scoped>
 p {
