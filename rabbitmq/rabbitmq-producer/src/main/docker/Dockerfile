@@ -12,7 +12,7 @@ COPY target/quarkus-app/quarkus/ /opt/quarkus/
 
 EXPOSE 8080
 USER 185
-ENV JAVA_OPTS_APPEND="-Delastic.apm.rabbitmq_naming_mode=QUEUE \
+ENV JAVA_OPTS_APPEND="-Delastic.apm.rabbitmq_naming_mode=QUEUE\
   -Delastic.apm.verify_server_cert=false\
   -Delastic.apm.log_level=TRACE\
   -Delastic.apm.service_name=producer\
@@ -20,9 +20,9 @@ ENV JAVA_OPTS_APPEND="-Delastic.apm.rabbitmq_naming_mode=QUEUE \
   -Delastic.apm.secret_token=\
   -Delastic.apm.environment=workshop\
   -Delastic.apm.application_packages=nl.ssg.incidentmetricscourse\
-  -Ddisabled.elastic.apm.capture_body=all\
-  -Ddisabled.elastic.apm.enable_log_correlation=true\
-  -Ddisabled.elastic.apm.log_ecs_reformatting=OVERRIDE\
+  -Delastic.apm.capture_body=all\
+  -Delastic.apm.enable_log_correlation=true\
+  -Delastic.apm.log_ecs_reformatting=OVERRIDE\
   -Delastic.apm.log_sending=true"
 ENV JAVA_TOOL_OPTIONS="-javaagent:/opt/lib/elastic-apm-agent.jar"
 
