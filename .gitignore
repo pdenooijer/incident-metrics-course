@@ -45,4 +45,4 @@ nb-configuration.xml
 .certs/
 
 # Workshop
-/slide-deck.html
+/_slides/slide-deck.html
