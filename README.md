@@ -7,12 +7,12 @@ If you want to learn more about Quarkus, please visit its website: <https://quar
 ## Prerequisites
 
 You must have the following installed on your machine:
-* podman-desktop - `brew install podman-desktop podman`
+* podman & podman-desktop - `brew install podman podman-desktop`
 * Kubernetes in Docker (kind) - `brew install kind`
 * Helm - `brew install helm`
 * Kubectl - `brew install kubectl`
-* Maven
-* Java 21 or newer
+* Maven - `brew install maven`
+* Java 21 or newer - `brew install openjdk@21` or `brew install temurin@21`
 
 ## Create Kubernetes cluster
 
@@ -58,13 +58,12 @@ The applications can be packaged, build and run in a single command using:
 
 ## Add APM integration
 
-1. Go to Kibana
-2. Add Elastic APM integration: http://localhost:30080/kibana/app/integrations/detail/apm/overview
-3. Under `General` > `Server configuration` change 
+1. Go to Kibana and add Elastic APM integration: http://localhost:30080/kibana/app/integrations/detail/apm/overview
+2. Under `General` > `Server configuration` change 
    1. `Host` from `localhost:8200` to `apm-server-apm-server:8200`
    2. `URL` from `https://localhost:8200` to `http://apm-server-apm-server:8200`
-4. Save
-5. In the next popup select `Add Elastic Agent later`
+3. Save
+4. In the next popup select `Add Elastic Agent later`
 
 
 ## Running the applications in dev mode
