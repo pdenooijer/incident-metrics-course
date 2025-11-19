@@ -187,9 +187,9 @@ Understanding reliability targets and measurement.
 
 ## 🔍 What Are They?
 
-- **SLI** → What we **measure** (data)
-- **SLO** → What we **aim for** (target)
 - **SLA** → What we **promise externally** (with consequences)
+- **SLO** → What we **aim for** (target)
+- **SLI** → What we **measure** (data)
 
 ---
 
@@ -197,9 +197,9 @@ Understanding reliability targets and measurement.
 
 | Concept | Stands for              | Meaning                                      | Audience          |
 |---------|-------------------------|----------------------------------------------|-------------------|
-| **SLI** | Service Level Indicator | A metric that represents system performance  | DevOps            |
-| **SLO** | Service Level Objective | Target reliability threshold for SLIs        | DevOps            |
 | **SLA** | Service Level Agreement | Contractual uptime commitment with penalties | Customers & Legal |
+| **SLO** | Service Level Objective | Target reliability threshold for SLIs        | DevOps            |
+| **SLI** | Service Level Indicator | A metric that represents system performance  | DevOps            |
 
 ---
 
@@ -231,9 +231,9 @@ Understanding reliability targets and measurement.
 
 | Item    | Purpose             | Used for             |
 |---------|---------------------|----------------------|
-| **SLI** | Measure reliability | Observability        |
-| **SLO** | Target reliability  | Alerting & decisions |
 | **SLA** | Contract guarantee  | Business alignment   |
+| **SLO** | Target reliability  | Alerting & decisions |
+| **SLI** | Measure reliability | Observability        |
 
 ---
 
