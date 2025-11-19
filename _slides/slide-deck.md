@@ -13,10 +13,10 @@ section {
 
 # **Observability <br/> for team leads**
 
-How to use logging and metrics to guide a team 
-and inform the customer. 
+How to use logging and metrics to guide a team
+and inform the customer.
 
-&nbsp;  
+&nbsp;
 
 [github.com:pdenooijer/incident-metrics-course.git]()
 
@@ -48,7 +48,7 @@ height: 80%; /* Adjust height as needed */
 }
 p img {
 flex-grow: 1;
-max-width: 18%; 
+max-width: 18%;
 max-height: 100%;
 object-fit: contain;
 margin: 0 10px; /* Add some horizontal space between images */
@@ -59,16 +59,16 @@ margin: 0 10px; /* Add some horizontal space between images */
 ![junior-mark.png](img/team/junior-mark.png)
 ![medior-alex.png](img/team/medior-alex.png)
 ![senior-arthur.png](img/team/senior-arthur.png)
-![tester-nia.png](img/team/tester-nia.png)  
+![tester-nia.png](img/team/tester-nia.png)
 
 ---
 
 # Observability from a developers perspective
-<!-- 
-Why would you need observability in this role? 
+<!--
+Why would you need observability in this role?
 - Verify solutions
-- Identify problems earlier 
-- Analyse problems more efficiently 
+- Identify problems earlier
+- Analyse problems more efficiently
 -->
 <style scoped>
 p {
@@ -79,7 +79,7 @@ height: 80%; /* Adjust height as needed */
 }
 p img {
 flex-grow: 1;
-max-width: 30%; 
+max-width: 30%;
 max-height: 100%;
 object-fit: contain;
 margin: 0 10px; /* Add some horizontal space between images */
@@ -93,11 +93,11 @@ margin: 0 10px; /* Add some horizontal space between images */
 ---
 
 # Observability from a PO's perspective
-<!-- 
+<!--
 Why would you need observability in this role?
-Report to stakeholders, verify SLAs, 
+Report to stakeholders, verify SLAs,
 make substantiated decisions on technical improvements
---> 
+-->
 <style scoped>
 p {
 display: flex;
@@ -107,7 +107,7 @@ height: 80%; /* Adjust height as needed */
 }
 p img {
 flex-grow: 1;
-max-width: 30%; 
+max-width: 30%;
 max-height: 100%;
 object-fit: contain;
 margin: 0 10px; /* Add some horizontal space between images */
@@ -119,12 +119,12 @@ margin: 0 10px; /* Add some horizontal space between images */
 ---
 
 # Observability from a testers perspective
-<!-- Why would you need observability in this role? 
+<!-- Why would you need observability in this role?
 - Identify issues yourself
 - Monitor performance
 - Automated verification of non-functionals
 - Monitoring of pipelines
---> 
+-->
 <style scoped>
 p {
 display: flex;
@@ -134,7 +134,7 @@ height: 80%; /* Adjust height as needed */
 }
 p img {
 flex-grow: 1;
-max-width: 30%; 
+max-width: 30%;
 max-height: 100%;
 object-fit: contain;
 margin: 0 10px; /* Add some horizontal space between images */
@@ -146,12 +146,12 @@ margin: 0 10px; /* Add some horizontal space between images */
 ---
 
 # Observability from a team-lead perspective
-<!-- Why would you need observability in this role? 
+<!-- Why would you need observability in this role?
 - Monitor team performance
 - Identify problems
 - Keep an overview of systems
 - Verify architectural constraints
---> 
+-->
 <style scoped>
 p {
 display: flex;
@@ -161,7 +161,7 @@ height: 40%; /* Adjust height as needed */
 }
 p img {
 flex-grow: 1;
-max-width: 18%; 
+max-width: 18%;
 max-height: 100%;
 object-fit: contain;
 margin: 0 10px; /* Add some horizontal space between images */
@@ -302,7 +302,7 @@ height: 80%; /* Adjust height as needed */
 }
 p img {
 flex-grow: 1;
-max-width: 18%; 
+max-width: 18%;
 max-height: 100%;
 object-fit: contain;
 margin: 0 10px; /* Add some horizontal space between images */
@@ -322,39 +322,39 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 - Clone repo: github.com:pdenooijer/incident-metrics-course.git
 - Follow the instructions in the README
- 
+
 ---
 
-# Logging 
-<!-- 09:30 - 09:40 --> 
+# Logging
+<!-- 09:30 - 09:40 -->
 
 **Exercise 1: Review the logging in Elastic Search**
 
-- What do you notice? 
-- Can you determine why you get no responses? 
+- What do you notice?
+- Can you determine why you get no responses?
 
 ---
 
-# Logging 
-<!-- 09:30 - 09:50 --> 
+# Logging
+<!-- 09:30 - 09:50 -->
 
 **Exercise 2: Review  the code in the repository**
 
-- What do you notice? 
-- Make changes where necessary, 
+- What do you notice?
+- Make changes where necessary,
   - change only the logging, not the 'business logic'
-- Can you identify the bug from your logging?   
+- Can you identify the bug from your logging?
 
 ---
 
-# Logging 
-<!-- 09:50 - 10:10 --> 
+# Logging
+<!-- 09:50 - 10:10 -->
 
 **Exercise 3: Setup some guidelines for your team**
 
-- Define what makes 'proper' logging 
+- Define what makes 'proper' logging
 - Make rules comprehensible for juniors to seniors
-- Discuss in pairs 
+- Discuss in pairs
 
 ---
 <!-- 10:10 - 10:25 -->
@@ -363,7 +363,7 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 ---
 
-# Logging 
+# Logging
 <!-- 10:25 - 10:45 -->
 
 **Lessons learned**
@@ -374,7 +374,7 @@ Plenary discussion of guidelines
 
 ## 1️⃣ Overly Verbose Logging ("Log Spam")
 
-**Symptom:** Thousands of log lines per minute, even under normal load.  
+**Symptom:** Thousands of log lines per minute, even under normal load.
 **Problem:** Important info is buried, logs grow fast, and analysis becomes painful.
 
 ```java
@@ -532,7 +532,7 @@ table {
 Experienced developers know: log level inflation kills signal-to-noise ratio.
 Keep verbosity low in production — more logs ≠ more visibility.
 
---- 
+---
 
 # ✅ Summary
 
@@ -544,22 +544,21 @@ Keep verbosity low in production — more logs ≠ more visibility.
 * Consistent structure
 * Traceability across systems
 
---- 
+---
 
 # Metrics TODO
 <!-- 10:45 - 12:00 -->
 - Tools en frameworks
   - OpenTelemetry
-  - 
 
 - Wat meten we?
   - Platform monitoring vs application monitoring
   - RED / USE / 4 golden signals
-   
-- Welke tools zijn er? 
+
+- Welke tools zijn er?
   - Grafana/Prometheus
   - Elastic APM
-  - Azure Application Insights 
+  - Azure Application Insights
   - AWS X-Ray
 
 ---
@@ -574,7 +573,7 @@ height: 80%; /* Adjust height as needed */
 }
 p img {
 flex-grow: 1;
-max-width: 18%; 
+max-width: 18%;
 max-height: 100%;
 object-fit: contain;
 margin: 0 10px; /* Add some horizontal space between images */
@@ -599,7 +598,7 @@ height: 80%; /* Adjust height as needed */
 }
 p img {
 flex-grow: 1;
-max-width: 18%; 
+max-width: 18%;
 max-height: 100%;
 object-fit: contain;
 margin: 0 10px; /* Add some horizontal space between images */
@@ -692,7 +691,7 @@ A **Grafana dashboard** could combine all three:
 
 👉 Together they give a complete picture of system health.
 
---- 
+---
 
 ## 🧩 Exercise: Monitor the RabbitMQ Application
 
@@ -715,8 +714,7 @@ Implement the RED, USE, and 4 Golden Signals metrics in the RabbitMQ setup.
 
 ![lunch.png](img/lunch.png)
 
-
---- 
+---
 
 # Tracing
 
@@ -730,7 +728,7 @@ height: 80%; /* Adjust height as needed */
 }
 p img {
 flex-grow: 1;
-max-width: 12%; 
+max-width: 12%;
 max-height: 100%;
 object-fit: contain;
 margin: 0 10px; /* Add some horizontal space between images */
@@ -744,7 +742,7 @@ margin: 0 10px; /* Add some horizontal space between images */
 ![azure-monitor.png](img/tracing/azure-monitor.png)
 ![azure-application-insights.png](img/tracing/azure-application-insights.png)
 
---- 
+---
 
 # Alerting
 <!-- 13:00 - 14:30 -->
