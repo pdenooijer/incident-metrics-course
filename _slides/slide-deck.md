@@ -865,6 +865,15 @@ For each alert:
 
 ---
 
+## 🔥 Alerting Tools
+
+- Choose tools that match your **scale and maturity**
+- Route alerts to the **right teams/persons**
+- Automate where possible
+- Use machine learning and anomaly detection only after getting the basics right
+
+---
+
 ## ⭐ Key Takeaways
 
 **Good alerting is:**
