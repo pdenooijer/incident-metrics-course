@@ -910,7 +910,9 @@ margin: 0 10px; /* Add some horizontal space between images */
 ![azure-application-insights.png](img/tracing/azure-application-insights.png)
 
 ---
-# Incident Management Metrics
+
+# Reporting
+## Incident Management Metrics
 <!--
 -->
 <style scoped>
@@ -935,57 +937,57 @@ margin: 0 10px; /* Add some horizontal space between images */
 # Incident Management Metrics
 ## MTTD — Mean Time To Detect
 
-**Definition** 
+**Definition**
 &emsp; Average time between the moment an incident occurs and the moment it is detected.
 
-**Why it matters** 
+**Why it matters**
 &emsp; The faster you detect an incident, the smaller the impact.
 
-**Source** 
+**Source**
 &emsp; Monitoring, logging, and alerting systems (e.g., Prometheus, APM).
 
 **Target**
 &emsp; < 15 minutes for major incidents (depending on SLA).
 
-
 ---
+
 # Incident Management Metrics
 ## MTTA — Mean Time To Acknowledge
 
 
-**Definition** 
+**Definition**
 &emsp; Average time between the reporting of an incident and the first response from an engineer.
 
-**Why it matters** 
+**Why it matters**
 &emsp; Shows how responsive the support or on-call team is.
 
-**Source** 
-&emsp; Ticket system, e.g. Jira, 
+**Source**
+&emsp; Ticket system, e.g. Jira,
 
 **Target**
 &emsp; < 15 minutes
 
-
 ---
+
 # Incident Management Metrics
 ## MTTR — Mean Time To Resolve
 
-**Definition** 
+**Definition**
 &emsp; Average time from detection to full resolution of an incident.
 
-**Why it matters** 
+**Why it matters**
 &emsp; Measures the efficiency of recovery processes and team collaboration.
 
-**Source** 
+**Source**
 &emsp; Ticket system, e.g. Jira,
 
-**Target** 
+**Target**
 &emsp; < 1 hour for major incidents, < 2 hour for minor incidents
-
 
 > Reliability is a function of mean time to failure (MTTF) and mean time to repair (MTTR)
 
 ---
+
 # Incident Management Metrics
 ## MTTF — Mean Time To Failure
 
@@ -1003,77 +1005,75 @@ margin: 0 10px; /* Add some horizontal space between images */
 **Target**
 &emsp; Increase over time through reliability engineering and preventive maintenance.
 
-
 > Reliability is a function of mean time to failure (MTTF) and mean time to repair (MTTR)
+
 ---
+
 # Incident Management Metrics
 ## Incident Recurrence Rate
 
-
-**Definition** 
+**Definition**
 &emsp; Percentage of incidents that reoccur within a given period.
 
-**Why it matters** 
+**Why it matters**
 &emsp; Indicator of structural problem-solving effectiveness (or lack thereof).
 
-**Source** 
+**Source**
 &emsp; Post-mortem, SLA reporting
 
-**Target** 
+**Target**
 &emsp; < 5% recurring incidents.
 
-
 ---
+
 # Incident Management Metrics
 ## RCA Completion Rate (Root Cause Analysis)
 
-**Definition** 
+**Definition**
 &emsp; Percentage of incidents for which a root cause is identified and documented within X days.
 
-**Why it matters** 
+**Why it matters**
 &emsp; Measures discipline in problem management and learning from incidents.
 
-**Target** 
+**Target**
 &emsp; 100% for major incidents within 5 working days.
 
-
 ---
+
 # Incident Management Metrics
 ## SLA Compliance Rate
 
-
-**Definition** 
+**Definition**
 &emsp; Percentage of incidents resolved within the agreed SLA timeframe.
 
-**Why it matters** 
+**Why it matters**
 &emsp; Shows adherence to commitments made to customers or the business.
 
-**Target** 
+**Target**
 &emsp; ≥ 95%.
 
-
 ---
+
 # Incident Management Metrics
 ## Post-Incident Customer Satisfaction (CSAT)
 
-
-**Definition** 
+**Definition**
 &emsp; Average satisfaction score from users after incident resolution.
 
-**Why it matters** 
+**Why it matters**
 &emsp; Measures not only speed but also communication quality and customer focus.
 
-**Source** 
+**Source**
 &emsp; Short survey after the incident.
 
-
 ---
+
 # Incident Management Metrics
 ## How They Relate
 
 A mental model:
 
-MTTD + MTTA + MTTR 
+MTTD + MTTA + MTTR
 &emsp; measure speed and efficiency of your incident process.
 
 MTTF + Recurrence + RCA Completion
