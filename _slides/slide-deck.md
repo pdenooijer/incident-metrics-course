@@ -180,21 +180,19 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 ---
 
-# 📊 SLA, SLO & SLI Recap
+# 🔍 SLA, SLO & SLI
+<!--
+- **SLA** → Agreement → What we **promise externally** (with consequences)
+- **SLO** → Objective → What we **aim for** (target)
+- **SLI** → Indicator → What we **measure** (data)
+-->
 
-Understanding reliability targets and measurement.
-
----
-
-## 🔍 What Are They?
-
-- **SLA** → What we **promise externally** (with consequences)
-- **SLO** → What we **aim for** (target)
-- **SLI** → What we **measure** (data)
+- Stand for?
+- Meaning?
 
 ---
 
-## 📐 Definitions
+## 📊 SLA, SLO & SLI Recap
 
 | Concept | Stands for              | Meaning                                      | Audience          |
 |---------|-------------------------|----------------------------------------------|-------------------|
@@ -204,7 +202,7 @@ Understanding reliability targets and measurement.
 
 ---
 
-## 📈 Example SLI
+## 📈 Example SLA, SLO, SLI
 
 **Service:** Order API
 **SLI:** Successful request rate per minute
