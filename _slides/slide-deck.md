@@ -125,7 +125,7 @@ margin: 0 10px; /* Add some horizontal space between images */
 - Automated verification of non-functionals
 - Monitoring of pipelines
 - Identify risk/focus-area's
---> 
+-->
 <style scoped>
 p {
 display: flex;
@@ -251,6 +251,8 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 > If it’s not logged, it didn’t happen.
 
+Why is logging important?
+
 ---
 
 # Logging - why logging matters
@@ -288,6 +290,7 @@ MDC.put("requestId", requestId);
 log.info("Order processed: {}", orderId);
 MDC.clear();
 ```
+
 ---
 
 # Tooling
@@ -313,7 +316,6 @@ margin: 0 10px; /* Add some horizontal space between images */
 ![azure-monitor](img/logging/azure-monitor.png)
 ![logo-loki](img/logging/loki.svg)
 ![splunk](img/logging/splunk.svg)
-
 
 ---
 
