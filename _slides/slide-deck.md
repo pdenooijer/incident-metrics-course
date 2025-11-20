@@ -31,9 +31,9 @@ and inform the customer.
 
 # Observability
 <!-- Check participants' knowledge, also introduce the elements of the workshop (logging, metrics, etc).-->
-What is observability?
-What elements can we identify?
-What do we use it for?
+- What is observability?
+- What elements can we identify?
+- What do we use it for?
 
 ---
 
@@ -187,8 +187,8 @@ margin: 0 10px; /* Add some horizontal space between images */
 - **SLI** → Indicator → What we **measure** (data)
 -->
 
-- Stand for?
-- Meaning?
+- What does it stand for?
+- What does it mean?
 
 ---
 
@@ -205,7 +205,7 @@ margin: 0 10px; /* Add some horizontal space between images */
 ## 📈 Example SLA, SLO, SLI
 
 **Service:** Order API
-**SLI:** Successful request rate per minute
+**SLI:** Successful requests per minute
 **Measured:** `99.2%`
 
 | Layer | Example                         |
@@ -249,8 +249,6 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 # Logging
 
-> If it’s not logged, it didn’t happen.
-
 Why is logging important?
 
 ---
@@ -261,6 +259,8 @@ Why is logging important?
 - Helps identify issues before users notice them
 - Good logs shorten **MTTR** (Mean Time To Recovery).
 - Enables better **incident response** and **root cause analysis**
+
+> If it’s not logged, it didn’t happen.
 
 ---
 
@@ -329,7 +329,7 @@ margin: 0 10px; /* Add some horizontal space between images */
 # Logging
 <!-- 09:30 - 09:40 -->
 
-**Exercise 1: Review the logging in Elastic Search**
+**Exercise 1: Review the logging in Elasticsearch**
 
 - What do you notice?
 - Can you determine why you get no responses?
@@ -358,9 +358,9 @@ margin: 0 10px; /* Add some horizontal space between images */
 - Discuss in pairs
 
 ---
-<!-- 10:10 - 10:25 -->
 
 # ☕ Break
+<!-- 10:10 - 10:25 -->
 
 ---
 
@@ -712,7 +712,7 @@ Implement the RED, USE, and 4 Golden Signals metrics in the RabbitMQ setup.
 ---
 
 # 🚨 Alerting
-<!-- 13:00 - 14:30 -->
+<!-- 13:00 - 14:00 -->
 
 Why does alerting exist?
 
@@ -911,10 +911,14 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 ---
 
+# ☕ Break
+<!-- 14:00 - 14:15 -->
+
+---
+
 # Reporting
 ## Incident Management Metrics
-<!--
--->
+<!-- 14:15 - 14:45 -->
 <style scoped>
 p {
 display: flex;
@@ -953,7 +957,6 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 # Incident Management Metrics
 ## MTTA — Mean Time To Acknowledge
-
 
 **Definition**
 &emsp; Average time between the reporting of an incident and the first response from an engineer.
@@ -1085,5 +1088,6 @@ SLA Compliance + CSAT
 ---
 
 # ❓ Questions?
+<!-- 14:45 - 15:00 -->
 
 ---
