@@ -547,20 +547,11 @@ Keep verbosity low in production — more logs ≠ more visibility.
 
 ---
 
-# Metrics TODO
+# Metrics
 <!-- 10:45 - 12:00 -->
-- Tools en frameworks
-  - OpenTelemetry
 
-- Wat meten we?
-  - Platform monitoring vs application monitoring
-  - RED / USE / 4 golden signals
-
-- Welke tools zijn er?
-  - Grafana/Prometheus
-  - Elastic APM
-  - Azure Application Insights
-  - AWS X-Ray
+- What is the difference between metrics and logs?
+- Why are metrics important?
 
 ---
 
@@ -613,6 +604,9 @@ margin: 0 10px; /* Add some horizontal space between images */
 
 ---
 
+<!---
+Ask the audience what they know about the key frameworks.
+-->
 # Metrics - frameworks
 
 Understand the key frameworks for measuring service health and performance.
