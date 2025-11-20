@@ -714,11 +714,13 @@ Implement the RED, USE, and 4 Golden Signals metrics in the RabbitMQ setup.
 # 🚨 Alerting
 <!-- 13:00 - 14:30 -->
 
-*"Alerts should notify humans **only** when action is required."*
+Why does alerting exist?
 
 ---
 
 ## 🎯 Why Alerting Exists
+
+*"Alerts should notify humans **only** when action is required."*
 
 - Detect issues **before users experience impact**
 - Avoid noise and alert fatigue
