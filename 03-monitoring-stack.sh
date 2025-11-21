@@ -18,6 +18,11 @@ kubectl delete namespace monitoring --ignore-not-found
 
 echo "--- Installing ---"
 
+# Disable prometheus install for the first part when the podman machine does not have 16Gig of memory.
+echo "Prometheus & Grafana..."
+helm install prometheus prometheus/kube-prometheus-stack --namespace monitoring \
+  --values "$monitoring_path/prometheus-values.yml"
+
 echo "Elasticsearch..."
 helm install elasticsearch elastic/elasticsearch --namespace monitoring \
   --values "$monitoring_path/elasticsearch-values.yml" --create-namespace
@@ -27,10 +32,6 @@ helm install filebeat elastic/filebeat --namespace monitoring --values "$monitor
 
 echo "Logstash..."
 helm install logstash elastic/logstash --namespace monitoring --values "$monitoring_path/logstash-values.yml"
-
-echo "Prometheus & Grafana..."
-helm install prometheus prometheus/kube-prometheus-stack --namespace monitoring \
-  --values "$monitoring_path/prometheus-values.yml"
 
 echo "APM..."
 helm install apm-server elastic/apm-server --namespace monitoring --values "$monitoring_path/apm-values.yml"

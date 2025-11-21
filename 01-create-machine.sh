@@ -7,6 +7,7 @@ echo "Stopping and deleting ${name} VM (if exists)..."
 podman machine stop "${name}" || true
 podman machine rm --force "${name}" || true
 
+# Change the memory to around 3/4 of the host's memory.
 echo "Creating VM ${name}..."
 podman machine init --memory 16384 --cpus 6 "${name}"
 echo "Starting VM..."
